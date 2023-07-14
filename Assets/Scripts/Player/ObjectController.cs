@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class ObjectController : MonoBehaviour
+public class ObjectController : MonoBehaviour, IPlayerController
 {
     [SerializeField] protected PlayerStatsSO _stats;
 
@@ -28,6 +28,7 @@ public class ObjectController : MonoBehaviour
     public PlayerStatsSO Stats => _stats;
     public Vector2 Input => FrameInput.Move;
     public Vector2 Velocity => _rb.velocity;
+    public Vector2 Speed => _speed;
     public Vector2 GroundNormal { get; private set; }
     public int WallDirection { get; private set; }
     public bool Hiding { get; private set; }
@@ -92,7 +93,7 @@ public class ObjectController : MonoBehaviour
         {
             _grounded = true;
             ResetJump();
-            // GroundedChanged?.Invoke(true, Mathf.Abs(_speed.y));
+            GroundedChanged?.Invoke(true, Mathf.Abs(_speed.y));
         }
 
         // Left the Ground
@@ -100,7 +101,7 @@ public class ObjectController : MonoBehaviour
         {
             _grounded = false;
             _timeLeftGrounded = _fixedTime;
-            // GroundedChanged?.Invoke(false, 0);
+            GroundedChanged?.Invoke(false, 0);
         }
     }
 
@@ -273,4 +274,20 @@ public class ObjectController : MonoBehaviour
         _rb.velocity = _speed;
     }
 
+}
+
+public interface IPlayerController
+{
+    // true = Landed. false = Left the Ground. float is Impact Speed
+    public event Action<bool, float> GroundedChanged;
+    public event Action<bool> WallGrabChanged;
+    public event Action<bool> Jumped; // Is wall jump
+
+
+    public PlayerStatsSO Stats { get; }
+    public Vector2 Input { get; }
+    public Vector2 Speed { get; }
+    public Vector2 Velocity { get; }
+    public Vector2 GroundNormal { get; }
+    public int WallDirection { get; }
 }
