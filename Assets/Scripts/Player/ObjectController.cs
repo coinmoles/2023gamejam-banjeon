@@ -263,7 +263,7 @@ public class ObjectController : MonoBehaviour
 
     protected virtual void ApplyMovement()
     {
-        Debug.Log(_speed);
+        // Debug.Log(_speed);
         _rb.velocity = _speed;
     }
 
