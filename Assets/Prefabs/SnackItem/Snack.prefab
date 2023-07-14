@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8081556678558388821}
   - component: {fileID: 7794299000735311730}
   - component: {fileID: 6279789603402886574}
+  - component: {fileID: 2608953157708518751}
   m_Layer: 0
   m_Name: Snack
   m_TagString: Untagged
@@ -170,3 +171,17 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 3
     Variable: {fileID: 11400000, guid: fc343ef2ee56c7b45bb6261913e858b0, type: 2}
+--- !u!114 &2608953157708518751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8847115496031856560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adefb77491a20d343b08a755c1706559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _snackToGive: {fileID: 11400000, guid: 3971c585bc342894998b6bc7de036498, type: 2}
+  _currentHoldingSnack: {fileID: 11400000, guid: 086ef6a7216f95a4faefebb2ff92ce80, type: 2}

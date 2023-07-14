@@ -1,17 +1,19 @@
 using UnityEngine;
 
-public class SnackItemGive : MonoBehaviour
+public class SnackItemCollision : MonoBehaviour
 {
     [SerializeField] private Snack _snackToGive;
-    [SerializeField] private Snack _currentSnack;
-    [SerializeField] private GameEvent _onSnackObtained;
+    [SerializeField] private SnackVariable _currentHoldingSnack;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            if (_currentSnack != null)
-                _onSnackObtained.Raise(this, _snackToGive);
+            if (_currentHoldingSnack.Snack == null)
+            {
+                _currentHoldingSnack.ObtainSnack(_snackToGive);
+                Destroy(gameObject);
+            }
         }
     }
 }

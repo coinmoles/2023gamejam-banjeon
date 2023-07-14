@@ -26,7 +26,7 @@ MonoBehaviour:
     m_Bits: 0
   VerticalDeadzoneThreshold: 0.3
   HorizontalDeadzoneThreshold: 0.1
-  MaxSpeed: 14
+  MaxSpeed: 2
   Acceleration: 120
   GroundDeceleration: 60
   AirDeceleration: 30
