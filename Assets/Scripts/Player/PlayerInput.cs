@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
 
     private void Update()
     {
+       
         FrameInput = Gather();    
     }
 

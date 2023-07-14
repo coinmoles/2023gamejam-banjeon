@@ -22,7 +22,8 @@ public class ObjectController : MonoBehaviour
 
     #region External
     public event Action<bool, float> GroundedChanged;
-
+    public event Action<bool> WallGrabChanged;
+    public event Action<bool> Jumped;
 
     public PlayerStatsSO Stats => _stats;
     public Vector2 Input => FrameInput.Move;
@@ -90,7 +91,7 @@ public class ObjectController : MonoBehaviour
         if (!_grounded && _groundHitCount > 0)
         {
             _grounded = true;
-            // ResetJump();
+            ResetJump();
             // GroundedChanged?.Invoke(true, Mathf.Abs(_speed.y));
         }
 
@@ -120,7 +121,6 @@ public class ObjectController : MonoBehaviour
 
         _currentWallJumpMoveMultiplier = Mathf.MoveTowards(_currentWallJumpMoveMultiplier, 1f, 1f / _stats.WallJumpInputLossTime * Time.deltaTime);
 
-        // May need to prioritize the nearest wall here... But who is going to make a climbable wall that tight?
         if (_wallHitCount > 0 && _wallHits[0].GetContacts(_wallContacts) > 0)
         {
             WallDirection = (int)Mathf.Sign(_wallContacts[0].point.x - transform.position.x);
@@ -153,7 +153,7 @@ public class ObjectController : MonoBehaviour
             _isLeavingWall = false; // after we've left the wall
         }
 
-        // WallGrabChanged?.Invoke(on);
+        WallGrabChanged?.Invoke(on);
     }
     #endregion
 
@@ -168,14 +168,14 @@ public class ObjectController : MonoBehaviour
 
     protected virtual bool HasBufferedJump => _bufferedJumpUsable && _fixedTime < _timeJumpWasPressed + _stats.JumpBufferTime;
     protected virtual bool CanUseCoyote => _coyoteUsable && !_grounded && _fixedTime < _timeLeftGrounded + _stats.CoyoteTime;
-    // protected virtual bool CanWallJump => (_isOnWall && !_isLeavingWall) || (_wallJumpCoyoteUsable && _fixedTime < _timeLeftWall + _stats.WallJumpCoyoteTime);
+    protected virtual bool CanWallJump => (_isOnWall && !_isLeavingWall) || (_wallJumpCoyoteUsable && _fixedTime < _timeLeftWall + _stats.WallJumpCoyoteTime);
 
     protected virtual void HandleJump()
     {
         if (!_endedJumpEarly && !_grounded && !FrameInput.JumpHeld && _rb.velocity.y > 0) _endedJumpEarly = true; // Early end detection
         if (!_jumpToConsume && !HasBufferedJump) return;
 
-        // if (CanWallJump) WallJump();
+        if (CanWallJump) WallJump();
         else if (_grounded || CanUseCoyote) NormalJump();
 
         _jumpToConsume = false; // Always consume the flag
@@ -188,12 +188,18 @@ public class ObjectController : MonoBehaviour
         _bufferedJumpUsable = false;
         _coyoteUsable = false;
         _speed.y = _stats.JumpPower;
-        // Jumped?.Invoke(false);
+        Jumped?.Invoke(false);
     }
 
     private void WallJump()
     {
-        // Jumped?.Invoke(true);
+        _endedJumpEarly = false;
+        _bufferedJumpUsable = false;
+        if (_isOnWall) _isLeavingWall = true;
+        _wallJumpCoyoteUsable = false;
+        _currentWallJumpMoveMultiplier = 0;
+        _speed = Vector2.Scale(_stats.WallJumpPower, new(-_lastWallDirection, 1));
+        Jumped?.Invoke(true);
     }
 
     protected virtual void ResetJump()
