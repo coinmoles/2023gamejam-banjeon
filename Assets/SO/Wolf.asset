@@ -26,26 +26,26 @@ MonoBehaviour:
     m_Bits: 1024
   VerticalDeadzoneThreshold: 0.3
   HorizontalDeadzoneThreshold: 0.1
-  MaxSpeed: 14
-  Acceleration: 120
+  MaxSpeed: 8
+  Acceleration: 40
   GroundDeceleration: 60
   AirDeceleration: 30
   GroundingForce: -1.5
   GrounderDistance: 0.05
-  JumpPower: 30
-  MaxFallSpeed: 40
-  FallAcceleration: 100
+  JumpPower: 15
+  MaxFallSpeed: 20
+  FallAcceleration: 30
   JumpCutModifier: 0.4
   JumpEndEarlyGravityModifier: 3
-  CoyoteTime: 0.3
-  JumpBufferTime: 0.3
+  CoyoteTime: 0.15
+  JumpBufferTime: 0.15
   AllowWalls: 1
   RequireInputPush: 0
   WallClimbSpeed: 5
   WallFallAcceleration: 8
   MaxWallFallSpeed: 15
-  WallJumpPower: {x: 15, y: 15}
-  WallJumpInputLossTime: 0.6
+  WallJumpPower: {x: 8, y: 10}
+  WallJumpInputLossTime: 1
   WallJumpCoyoteTime: 0.3
   WallDetectorSize: {x: 0.75, y: 1.25}
   ExternalVelocityDecay: 100
