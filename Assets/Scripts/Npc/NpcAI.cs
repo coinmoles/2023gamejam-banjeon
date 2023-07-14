@@ -22,17 +22,17 @@ public abstract class NpcAI : MonoBehaviour
         else if (_npcAggro.IsCheckingWork)
             return new FrameInput()
             {
-                Move = new Vector2(CalcDirToLocation(_npcAggro.WorkLocation), 0)
+                Move = new Vector2(CalcDirToLocation(_npcAggro.WorkPosition), 0)
             };
         else if (_npcAggro.IsGoingHome)
         {
-            if (Mathf.Abs(_npcAggro.HomeLocation.x - transform.position.x) < 0.2f)
+            if (Mathf.Abs(_npcAggro.HomePosition.x - transform.position.x) < 0.2f)
             {
                 _npcAggro.HomeArrived();
             }
             return new FrameInput()
             {
-                Move = new Vector2(CalcDirToLocation(_npcAggro.HomeLocation), 0)
+                Move = new Vector2(CalcDirToLocation(_npcAggro.HomePosition), 0)
             };
         }
 
