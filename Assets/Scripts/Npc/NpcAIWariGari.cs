@@ -23,6 +23,7 @@ public class NpcAIWariGari : NpcAI
 
     protected override FrameInput CalcDefaultInput()
     {
+        Debug.Log("What");
         return new FrameInput()
         {
             Move = inputVector

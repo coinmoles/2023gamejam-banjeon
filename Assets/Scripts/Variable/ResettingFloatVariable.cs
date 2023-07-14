@@ -7,33 +7,24 @@ using UnityEditor;
 namespace ScriptableObjectVariable
 {
     [CreateAssetMenu(menuName = "Variable/Resetting Float Variable")]
-    public class ResettingFloatVariable : FloatVariable
+    public class ResettingFloatVariable : FloatVariable, IResettable
     {
-        private float _initialValue;
+        [SerializeField] private float _initialValue;
+        [SerializeField] private ResettableRuntimeSet _resettableRuntimeSet;
 
-        private void OnEnable()
+        public void Reset()
         {
-#if UNITY_EDITOR
-            EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-            EditorApplication.playModeStateChanged += OnPlayModeStateChanged;
-#endif
+            SetValue(_initialValue);
         }
 
-#if UNITY_EDITOR
-        private void OnPlayModeStateChanged(PlayModeStateChange state)
+        public void Awake()
         {
-            switch (state)
-            {
-                case PlayModeStateChange.EnteredPlayMode:
-                    _initialValue = Value;
-                    break;
-
-                case PlayModeStateChange.ExitingPlayMode:
-                    EditorApplication.playModeStateChanged -= OnPlayModeStateChanged;
-                    SetValue(_initialValue);
-                    break;
-            }
+            _resettableRuntimeSet.Add(this);
         }
-#endif
+
+        public void OnDestroy()
+        {
+            _resettableRuntimeSet.Remove(this);
+        }
     }
 }
