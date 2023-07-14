@@ -357,6 +357,8 @@ GameObject:
   - component: {fileID: 1669196060}
   - component: {fileID: 1669196059}
   - component: {fileID: 1669196058}
+  - component: {fileID: 1669196065}
+  - component: {fileID: 1669196064}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -473,6 +475,40 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669196064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669196057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e0f490c8cd365342823bb10c40e5273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _linkedWork: {fileID: 11400000, guid: a28664777f8625b4c8109333bf9f7d29, type: 2}
+  _isWorking: 0
+  _isGoingHome: 0
+  _homeLocation: {x: 0, y: 0}
+--- !u!114 &1669196065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669196057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26f6e3e8c2d98d4aa7041d14f6804e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _likedSnack: {fileID: 11400000, guid: 8bbb9f61dd4d6a24fa6c5ace05110395, type: 2}
+  _snackAggroTime:
+    UseConstant: 1
+    ConstantValue: 3
+    Variable: {fileID: 0}
+  _isEating: 0
 --- !u!1 &1720123231
 GameObject:
   m_ObjectHideFlags: 0

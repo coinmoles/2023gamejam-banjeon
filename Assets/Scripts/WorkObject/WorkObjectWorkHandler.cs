@@ -20,12 +20,13 @@ public class WorkObjectWorkHandler : MonoBehaviour
         if (Time.time > _linkedWork.EndTime)
         {
             _linkedWork.Ended();
+            enabled = false;
         }
     }
 
     public void WorkSabotaged(float delay)
     {
-
+        enabled = true;
         _linkedWork.Sabotaged(delay);
     }
 }

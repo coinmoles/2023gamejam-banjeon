@@ -29,7 +29,7 @@ public class SnackItemSnackHandler : MonoBehaviour
 #if UNITY_EDITOR
     public void GiveSnackToTarget()
     {
-        target.GetComponent<NpcAggro>().ObtainSnack(_snackToGive);
+        target.GetComponent<NpcSnack>().GivenSnack(_snackToGive);
     }
 #endif
 }
