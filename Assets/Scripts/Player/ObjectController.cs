@@ -2,15 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Playables;
 
 public class ObjectController : MonoBehaviour, IPlayerController
 {
-    [SerializeField] protected PlayerStatsSO _stats;
-
     #region Internal
 
     protected Rigidbody2D _rb;
+    [SerializeField] protected PlayerStatsSO _stats;
     [SerializeField] protected CapsuleCollider2D _col;
 
     protected FrameInput FrameInput;
@@ -20,13 +18,15 @@ public class ObjectController : MonoBehaviour, IPlayerController
     protected bool _hasControl = true;
 
     [SerializeField] protected bool _faceLeft = false;
-    public bool FaceLeft => _faceLeft;
     #endregion
 
     #region External
     public event Action<bool, float> GroundedChanged;
     public event Action<bool> WallGrabChanged;
     public event Action<bool> Jumped;
+
+    // Additional
+    public event Action<bool> DayChanged;
 
     public PlayerStatsSO Stats => _stats;
     public Vector2 Input => FrameInput.Move;
@@ -35,14 +35,29 @@ public class ObjectController : MonoBehaviour, IPlayerController
     public Vector2 GroundNormal { get; private set; }
     public int WallDirection { get; private set; }
     public bool Hiding { get; private set; }
+
+    public bool FaceLeft => _faceLeft;
     #endregion
 
     protected virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
+        
     }
 
-    
+    #region DayNight
+
+    protected virtual void ToggleChanged(bool isDay)
+    {
+        // Debug.Log(isDay);
+        DayChanged?.Invoke(isDay);
+    }
+
+    public virtual void OnDayStart() => ToggleChanged(true);
+    public virtual void OnNightStart() => ToggleChanged(false);
+
+    #endregion
+
     #region Collision
 
     private RaycastHit2D[] _groundHits = new RaycastHit2D[2];
@@ -289,7 +304,7 @@ public interface IPlayerController
     public event Action<bool, float> GroundedChanged;
     public event Action<bool> WallGrabChanged;
     public event Action<bool> Jumped; // Is wall jump
-
+    public event Action<bool> DayChanged; // isDay
 
     public PlayerStatsSO Stats { get; }
     public Vector2 Input { get; }

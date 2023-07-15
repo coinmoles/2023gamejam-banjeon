@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fadb9f6d304fa549a61ca974ec21d3d, type: 3}
-  m_Name: Wolf
+  m_Name: RedStats
   m_EditorClassIdentifier: 
   PlayerLayer:
     serializedVersion: 2
@@ -26,20 +26,20 @@ MonoBehaviour:
     m_Bits: 1024
   VerticalDeadzoneThreshold: 0.3
   HorizontalDeadzoneThreshold: 0.1
-  MaxSpeed: 8
-  Acceleration: 40
+  MaxSpeed: 4
+  Acceleration: 20
   GroundDeceleration: 60
   AirDeceleration: 30
   GroundingForce: -1.5
   GrounderDistance: 0.05
-  JumpPower: 15
+  JumpPower: 5
   MaxFallSpeed: 20
   FallAcceleration: 30
   JumpCutModifier: 0.4
   JumpEndEarlyGravityModifier: 3
   CoyoteTime: 0.15
   JumpBufferTime: 0.15
-  AllowWalls: 1
+  AllowWalls: 0
   RequireInputPush: 0
   WallClimbSpeed: 5
   WallFallAcceleration: 8

@@ -5,12 +5,20 @@ using UnityEngine;
 
 public class PlayerController : ObjectController
 {
+    [SerializeField] private PlayerStatsSO RedStats;
+    [SerializeField] private PlayerStatsSO WolfStats;
     protected PlayerInput _input;
 
     protected override void Awake()
     {
         _input = GetComponent<PlayerInput>();
+        ToggleChanged(isDay: true);
         base.Awake();
+    }
+
+    private void Start()
+    {
+        ToggleChanged(isDay: true);
     }
 
     protected virtual void Update()
@@ -46,4 +54,13 @@ public class PlayerController : ObjectController
             _timeJumpWasPressed = _fixedTime;
         }
     }
+
+    #region DayNight
+
+    protected override void ToggleChanged(bool isDay)
+    {
+        base.ToggleChanged(isDay);
+        _stats = isDay ? RedStats : WolfStats;
+    }
+    #endregion
 }
