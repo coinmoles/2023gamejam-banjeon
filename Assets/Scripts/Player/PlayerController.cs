@@ -33,6 +33,7 @@ public class PlayerController : ObjectController
 
         CheckCollisions();
         HandleCollisions();
+        HandleLadders();
         HandleWalls();
 
         HandleJump();
