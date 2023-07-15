@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b22022fad98cbd47ae32dcff64efa0f, type: 3}
-  m_Name: IsDay
+  m_Script: {fileID: 11500000, guid: 505d39fcbdd12c94fbafe9c2bc28ebb8, type: 3}
+  m_Name: Snack 1
   m_EditorClassIdentifier: 
-  DeveloperDescription: Is it day
-  Value: 0
+  SnackName: Snack Test

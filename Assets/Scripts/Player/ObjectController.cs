@@ -16,12 +16,8 @@ public class ObjectController : MonoBehaviour, IPlayerController
 
     protected float _fixedTime;
     protected bool _hasControl = true;
-<<<<<<< Updated upstream
-=======
 
     [SerializeField] protected bool _faceLeft = false;
-    
->>>>>>> Stashed changes
     #endregion
 
     #region External
@@ -294,6 +290,10 @@ public class ObjectController : MonoBehaviour, IPlayerController
     {
         // Debug.Log(_speed);
         _rb.velocity = _speed;
+        if (_speed.x < -0.1f)
+            _faceLeft = true;
+        else if (_speed.x > 0.1f)
+            _faceLeft = false;
     }
 
 }
