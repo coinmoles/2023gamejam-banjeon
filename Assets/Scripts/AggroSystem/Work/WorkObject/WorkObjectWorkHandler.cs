@@ -1,16 +1,26 @@
 using ScriptableObjectVariable;
+using System.Collections;
 using UnityEditor;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+
+public enum WorkObjectType
+{
+    Metal,
+    Wooden
+};
 
 public class WorkObjectWorkHandler : MonoBehaviour
 {
     [SerializeField] private WorkSO _linkedWork;
+    [SerializeField] private WorkObjectType _workObjectType;
 
     [Header("Day Night Cycle")]
     [SerializeField] private BoolReference _isDay;
     [SerializeField] private FloatReference _dayNightStart;
     [SerializeField] private FloatReference _dayNightLength;
+
+    [Header("Game Events")]
+    [SerializeField] private GameEvent _onSFXPlay;
 
     private void Start()
     {
@@ -27,9 +37,20 @@ public class WorkObjectWorkHandler : MonoBehaviour
         }
     }
 
+    private IEnumerator PlaySabotageSFX()
+    {
+        _onSFXPlay.Raise(this, "swing");
+        yield return new WaitForSeconds(0.5f);
+        if (_workObjectType == WorkObjectType.Metal)
+            _onSFXPlay.Raise(this, "metal_break");
+        else if (_workObjectType == WorkObjectType.Wooden)
+            _onSFXPlay.Raise(this, "wood_break");
+    }
+
     public void WorkSabotaged()
     {
         enabled = true;
+        StartCoroutine(PlaySabotageSFX());
         _linkedWork.Sabotaged();
     }
 
