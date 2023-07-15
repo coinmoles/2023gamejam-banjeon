@@ -1,23 +1,29 @@
 using UnityEngine;
 using UnityEngine.UI;
-using ScriptableObjectVariable;
 
-public abstract class AggroSlider : MonoBehaviour
+public interface IAggroSlidable
+{
+    public bool IsAggro { get; }
+    public float MaxAggroTime { get; }
+    public float AggroEndTime { get; }
+        
+}
+
+public abstract class AggroSlider<T>: MonoBehaviour where T: IAggroSlidable
 {
     private Slider _slider;
+    private T _aggroSlidable;
 
-    protected abstract bool IsAggro { get; }
-    protected abstract float MaxAggroTime { get; }
-    protected abstract float AggroEndTime { get; }
 
     protected virtual void Awake()
     {
         _slider = GetComponent<Slider>();
+        _aggroSlidable = GetComponentInParent<T>();
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        if (IsAggro)
-            _slider.value = (AggroEndTime - Time.time) / MaxAggroTime;
+        if (_aggroSlidable.IsAggro)
+            _slider.value = (_aggroSlidable.AggroEndTime - Time.time) /_aggroSlidable.MaxAggroTime;
     }
 }

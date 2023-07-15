@@ -9,7 +9,7 @@ public enum WorkObjectType
     Wooden
 };
 
-public class WorkObjectWorkHandler : MonoBehaviour
+public class WorkObjectWorkHandler : MonoBehaviour, IAggroSlidable
 {
     [SerializeField] private WorkSO _linkedWork;
     [SerializeField] private WorkObjectType _workObjectType;
@@ -22,6 +22,13 @@ public class WorkObjectWorkHandler : MonoBehaviour
     [Header("Game Events")]
     [SerializeField] private GameEvent _onPlaySFX;
 
+
+    public bool IsAggro => _linkedWork.EndTime > Time.time;
+    public float MaxAggroTime => _linkedWork.MaxAggroTime;
+    public float AggroEndTime => _linkedWork.EndTime;
+
+    private bool _endFlag;
+
     private void Start()
     {
         _linkedWork.EndTime = 0;
@@ -30,10 +37,10 @@ public class WorkObjectWorkHandler : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time > _linkedWork.EndTime)
+        if (!_endFlag && Time.time > _linkedWork.EndTime)
         {
             _linkedWork.Ended();
-            enabled = false;
+            _endFlag = true;
         }
     }
 
@@ -49,7 +56,7 @@ public class WorkObjectWorkHandler : MonoBehaviour
 
     public void WorkSabotaged()
     {
-        enabled = true;
+        _endFlag = false;
         StartCoroutine(PlaySabotageSFX());
         _linkedWork.Sabotaged();
     }

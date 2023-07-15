@@ -1,8 +1,7 @@
 using ScriptableObjectVariable;
-using System.Collections;
 using UnityEngine;
 
-public class NpcSnack : MonoBehaviour
+public class NpcSnack : MonoBehaviour, IAggroSlidable
 {
     [Header("Aggro")]
     [SerializeField] private SnackSO _likedSnack;
@@ -15,8 +14,9 @@ public class NpcSnack : MonoBehaviour
     [SerializeField] private FloatReference _dayNightStart;
     [SerializeField] private FloatReference _dayNightLength;
 
-    public FloatReference SnackAggroTime => _snackAggroTime;
-    public FloatReference AggroEndTime => _aggroEndTime;
+    public bool IsAggro => _isEating;
+    public float MaxAggroTime => _snackAggroTime;
+    public float AggroEndTime => _aggroEndTime;
 
 
     public bool IsEating => _isEating;

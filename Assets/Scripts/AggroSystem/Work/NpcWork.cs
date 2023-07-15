@@ -1,20 +1,22 @@
-using ScriptableObjectVariable;
-using System.Collections;
 using UnityEngine;
 
-public class NpcWork : MonoBehaviour
+public class NpcWork : MonoBehaviour, IAggroSlidable
 {
     [Header("Aggro Data")]
-    [SerializeField] public WorkSO LinkedWork;
+    [SerializeField] private WorkSO _linkedWork;
 
     [Header("Aggro State")]
     [SerializeField] private bool _isWorking;
     [SerializeField] private bool _isGoingHome;
     [SerializeField] private Vector2 _homeLocation;
 
-    public bool IsCheckingWork => _isWorking;
+    public bool IsAggro => _isWorking;
+    public float MaxAggroTime => _linkedWork.MaxAggroTime;
+    public float AggroEndTime => _linkedWork.EndTime;
+
     public bool IsGoingHome => _isGoingHome;
-    public Vector2 WorkPosition => LinkedWork.WorkPosition;
+    
+    public Vector2 WorkPosition => _linkedWork.WorkPosition;
     public Vector2 HomePosition => _homeLocation;
 
     #region Lifecycle Functions
@@ -25,12 +27,12 @@ public class NpcWork : MonoBehaviour
 
     private void OnEnable()
     {
-        LinkedWork.RegisterListener(this);
+        _linkedWork.RegisterListener(this);
     }
 
     private void OnDisable()
     {
-        LinkedWork.UnregisterListener(this);
+        _linkedWork.UnregisterListener(this);
     }
     #endregion
 
