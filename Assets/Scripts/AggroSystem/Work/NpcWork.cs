@@ -5,7 +5,7 @@ using UnityEngine;
 public class NpcWork : MonoBehaviour
 {
     [Header("Aggro Data")]
-    [SerializeField] private WorkSO _linkedWork;
+    [SerializeField] public WorkSO LinkedWork;
 
     [Header("Aggro State")]
     [SerializeField] private bool _isWorking;
@@ -14,7 +14,7 @@ public class NpcWork : MonoBehaviour
 
     public bool IsCheckingWork => _isWorking;
     public bool IsGoingHome => _isGoingHome;
-    public Vector2 WorkPosition => _linkedWork.WorkPosition;
+    public Vector2 WorkPosition => LinkedWork.WorkPosition;
     public Vector2 HomePosition => _homeLocation;
 
     #region Lifecycle Functions
@@ -25,12 +25,12 @@ public class NpcWork : MonoBehaviour
 
     private void OnEnable()
     {
-        _linkedWork.RegisterListener(this);
+        LinkedWork.RegisterListener(this);
     }
 
     private void OnDisable()
     {
-        _linkedWork.UnregisterListener(this);
+        LinkedWork.UnregisterListener(this);
     }
     #endregion
 

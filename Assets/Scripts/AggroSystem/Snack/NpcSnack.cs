@@ -4,18 +4,19 @@ using UnityEngine;
 
 public class NpcSnack : MonoBehaviour
 {
-    [Header("Aggro Data")]
+    [Header("Aggro")]
     [SerializeField] private SnackSO _likedSnack;
     [SerializeField] private FloatReference _snackAggroTime;
-
-    [Header("Aggro State")]
-    [SerializeField] private bool _isEating;
-    [SerializeField] private float _aggroEndTime;
+    [SerializeField] private BoolReference _isEating;
+    [SerializeField] private FloatReference _aggroEndTime;
 
     [Header("Day Night Cycle")]
     [SerializeField] private BoolReference _isDay;
     [SerializeField] private FloatReference _dayNightStart;
     [SerializeField] private FloatReference _dayNightLength;
+
+    public FloatReference SnackAggroTime => _snackAggroTime;
+    public FloatReference AggroEndTime => _aggroEndTime;
 
 
     public bool IsEating => _isEating;
@@ -23,7 +24,7 @@ public class NpcSnack : MonoBehaviour
     {
         if (Time.time > _aggroEndTime)
         {
-            _isEating = false;
+            _isEating.SetValue(false);
             enabled = false;
         }
     }
@@ -38,9 +39,9 @@ public class NpcSnack : MonoBehaviour
     {
         if (snack == _likedSnack && !_isEating)
         {
-            _isEating = true;
+            _isEating.SetValue(true);
             enabled = true;
-            _aggroEndTime = Time.time + _snackAggroTime;
+            _aggroEndTime.SetValue(Time.time + _snackAggroTime);
             return true;
         }
         return false;
@@ -53,7 +54,7 @@ public class NpcSnack : MonoBehaviour
         {
             float timeFromDayStart = Time.time - _dayNightStart;
             float timeTilDayEnd = _dayNightLength - timeFromDayStart;
-            _aggroEndTime -= timeTilDayEnd;
+            _aggroEndTime.SetValue(_aggroEndTime - timeTilDayEnd);
         }
     }
 }
