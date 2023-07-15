@@ -102,6 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _linkedWork: {fileID: 11400000, guid: a28664777f8625b4c8109333bf9f7d29, type: 2}
+  _workObjectType: 0
   _isDay:
     UseConstant: 0
     ConstantValue: 0
@@ -114,6 +115,7 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 6450dceecfeebe646a6924ba00bf32fd, type: 2}
+  _onPlaySFX: {fileID: 11400000, guid: 415e7292072111847a32d299db498da2, type: 2}
 --- !u!114 &1522653225496145348
 MonoBehaviour:
   m_ObjectHideFlags: 0

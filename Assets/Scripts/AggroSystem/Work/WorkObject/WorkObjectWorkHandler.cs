@@ -20,7 +20,7 @@ public class WorkObjectWorkHandler : MonoBehaviour
     [SerializeField] private FloatReference _dayNightLength;
 
     [Header("Game Events")]
-    [SerializeField] private GameEvent _onSFXPlay;
+    [SerializeField] private GameEvent _onPlaySFX;
 
     private void Start()
     {
@@ -39,12 +39,12 @@ public class WorkObjectWorkHandler : MonoBehaviour
 
     private IEnumerator PlaySabotageSFX()
     {
-        _onSFXPlay.Raise(this, "swing");
+        _onPlaySFX.Raise(this, "swing");
         yield return new WaitForSeconds(0.5f);
         if (_workObjectType == WorkObjectType.Metal)
-            _onSFXPlay.Raise(this, "metal_break");
+            _onPlaySFX.Raise(this, "metal_break");
         else if (_workObjectType == WorkObjectType.Wooden)
-            _onSFXPlay.Raise(this, "wood_break");
+            _onPlaySFX.Raise(this, "wood_break");
     }
 
     public void WorkSabotaged()
