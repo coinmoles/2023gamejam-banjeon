@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ObjectController : MonoBehaviour, IPlayerController
@@ -42,7 +40,6 @@ public class ObjectController : MonoBehaviour, IPlayerController
     protected virtual void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        
     }
 
     #region DayNight

@@ -1,3 +1,4 @@
+using ScriptableObjectVariable;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -5,6 +6,11 @@ using static UnityEngine.GraphicsBuffer;
 public class WorkObjectWorkHandler : MonoBehaviour
 {
     [SerializeField] private WorkSO _linkedWork;
+
+    [Header("Day Night Cycle")]
+    [SerializeField] private BoolReference _isDay;
+    [SerializeField] private FloatReference _dayNightStart;
+    [SerializeField] private FloatReference _dayNightLength;
 
     private void Start()
     {
@@ -25,6 +31,16 @@ public class WorkObjectWorkHandler : MonoBehaviour
     {
         enabled = true;
         _linkedWork.Sabotaged();
+    }
+
+    public void OnPlayerHit(Component sender, object data)
+    {
+        if (!_isDay)
+        {
+            float timeFromDayStart = Time.time - _dayNightStart;
+            float timeTilDayEnd = _dayNightLength - timeFromDayStart;
+            _linkedWork.EndTime -= timeTilDayEnd;
+        }
     }
 }
 
