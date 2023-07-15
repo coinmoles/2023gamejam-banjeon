@@ -99,6 +99,8 @@ GameObject:
   - component: {fileID: 77098906962745949}
   - component: {fileID: 3009557902104739023}
   - component: {fileID: 8915969441954535663}
+  - component: {fileID: 5225919646056727590}
+  - component: {fileID: 75755069568665981}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -256,6 +258,55 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: b484b3a4d5bb01443b56dc9b98b57c73, type: 2}
+--- !u!114 &5225919646056727590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259942830000997166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 338ce7c5a0c104243a2eb8344167c1d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMaxHealth:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 6764d38a9ecd39f419458a9acb7962c5, type: 2}
+  _playerCurrentHealth:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 9b8b1cf2e9041af478c712d5598e5844, type: 2}
+  _onGameOver: {fileID: 11400000, guid: 09aef4964dd1bd7479b084a3378d36b1, type: 2}
+--- !u!114 &75755069568665981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259942830000997166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f56825872c2b04c8c0edff0d9d945c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 3819466204831414c8bba6e148398c3f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5225919646056727590}
+        m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
+        m_MethodName: OnPlayerHit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1141340621758336169
 GameObject:
   m_ObjectHideFlags: 0
