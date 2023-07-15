@@ -1,11 +1,11 @@
-using ScriptableObjectVariable;
+﻿using ScriptableObjectVariable;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TargetInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _prompt;
+    private string _prompt = "공격";
 
     [SerializeField] private BoolReference _isDay;
 

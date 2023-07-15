@@ -1,9 +1,9 @@
-using ScriptableObjectVariable;
+﻿using ScriptableObjectVariable;
 using UnityEngine;
 
 public class NpcInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _prompt;
+    private string _prompt = "간식 주기";
     
     [SerializeField] private SnackVariable _snackVariable;
     [SerializeField] private BoolReference _isDay;

@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorkName: Murder Target
   WorkPosition: {x: 0, y: 0}
-  EndTime: 0
+  EndTime: 18.195396
   AggroTimeAdded:
     UseConstant: 0
     ConstantValue: 0
-    Variable: {fileID: 0}
+    Variable: {fileID: 11400000, guid: cafc5d4025e5d9d45ba8cb50849332db, type: 2}
   MaxAggroTime:
     UseConstant: 1
     ConstantValue: 10

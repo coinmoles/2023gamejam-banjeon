@@ -1,11 +1,11 @@
-using ScriptableObjectVariable;
+﻿using ScriptableObjectVariable;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class WorkObjectInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField] private string _prompt;
+    private string _prompt = "Break";
 
     [SerializeField] private BoolReference _isDay;
 
