@@ -185,4 +185,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _snackToGive: {fileID: 11400000, guid: 8bbb9f61dd4d6a24fa6c5ace05110395, type: 2}
   _currentHoldingSnack: {fileID: 11400000, guid: 086ef6a7216f95a4faefebb2ff92ce80, type: 2}
+  _onSFXPlay: {fileID: 11400000, guid: 415e7292072111847a32d299db498da2, type: 2}
   target: {fileID: 0}
