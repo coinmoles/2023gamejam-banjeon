@@ -11,6 +11,7 @@ public class WorkSO : ScriptableObject
     public FloatReference AggroTimeAdded;
     public FloatReference MaxAggroTime;
     public List<NpcWork> npcWorkListeners = new List<NpcWork>();
+    public Sprite WorkImage;
 
     public void RegisterListener(NpcWork listener)
     {

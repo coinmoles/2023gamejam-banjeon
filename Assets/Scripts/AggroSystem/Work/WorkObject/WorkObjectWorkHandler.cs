@@ -26,6 +26,7 @@ public class WorkObjectWorkHandler : MonoBehaviour, IAggroSlidable
     public bool IsAggro => _linkedWork.EndTime > Time.time;
     public float MaxAggroTime => _linkedWork.MaxAggroTime;
     public float AggroEndTime => _linkedWork.EndTime;
+    public Sprite AggroSliderImage => _linkedWork.WorkImage;
 
     private bool _endFlag;
 

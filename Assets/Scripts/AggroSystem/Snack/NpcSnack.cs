@@ -17,6 +17,7 @@ public class NpcSnack : MonoBehaviour, IAggroSlidable
     public bool IsAggro => _isEating;
     public float MaxAggroTime => _snackAggroTime;
     public float AggroEndTime => _aggroEndTime;
+    public Sprite AggroSliderImage => _likedSnack.SnackImage;
 
 
     public bool IsEating => _isEating;

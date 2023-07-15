@@ -10,9 +10,11 @@ public class NpcWork : MonoBehaviour, IAggroSlidable
     [SerializeField] private bool _isGoingHome;
     [SerializeField] private Vector2 _homeLocation;
 
+
     public bool IsAggro => _isWorking;
     public float MaxAggroTime => _linkedWork.MaxAggroTime;
     public float AggroEndTime => _linkedWork.EndTime;
+    public Sprite AggroSliderImage => _linkedWork.WorkImage;
 
     public bool IsGoingHome => _isGoingHome;
     
