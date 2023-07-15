@@ -16,18 +16,18 @@ public class PlayerAnimator : MonoBehaviour
         _anim = GetComponent<Animator>();
         _renderer = GetComponent<SpriteRenderer>();
         // _source = GetComponent<AudioSource>();
-    }
 
-    private void Start()
-    {
         _player.GroundedChanged += OnGroundedChanged;
         _player.WallGrabChanged += OnWallGrabChanged;
         _player.Jumped += OnJumped;
+
+        _player.DayChanged += OnDayChanged;
     }
 
     private float _time;
     private void Update()
     {
+        // Debug.Log(_isDay);
         _time += Time.deltaTime;
         HandleSpriteFlipping();
         HandleGroundEffects();
@@ -41,6 +41,19 @@ public class PlayerAnimator : MonoBehaviour
         if (_isOnWall & _player.WallDirection != 0) _renderer.flipX = _player.WallDirection == -1;
         else if (Mathf.Abs(_player.Input.x) > 0.1f) _renderer.flipX = _player.Input.x < 0;
     }
+
+    #region Day Night
+
+    private bool _isDay;
+    private bool _isDayChanged = false;
+    private float _changeAnimTime = 0.5f;
+    private void OnDayChanged(bool isDay)
+    {
+        Debug.Log("IsDay" + isDay.ToString());
+        _isDayChanged = true;
+        _isDay = isDay;
+    }
+    #endregion
 
     #region Ground Movement
 
@@ -193,9 +206,10 @@ public class PlayerAnimator : MonoBehaviour
         {
             if (Time.time < _lockedTill) return _currentState;
 
+            if (_isDayChanged) return LockState(ChangeForm, _changeAnimTime);
+
             if (!_grounded)
             {
-                // if (_hitWall) return LockState(WallHit, _wallHitAnimTime);
                 if (_isOnWall)
                 {
                     if (_player.Speed.y < 0) return Wolf_WallSlide;
@@ -204,20 +218,15 @@ public class PlayerAnimator : MonoBehaviour
                 }
             }
 
-            // if (_player.Crouching) return _player.Input.x == 0 || !_grounded ? Crouch : Crawl;
-            if (_landed) return LockState(Wolf_Idle, _landAnimDuration);
-            if (_jumpTriggered) return Wolf_JumpUp;
+            if (_landed) return LockState((_isDay ? Red_Idle : Wolf_Idle), _landAnimDuration);
+            if (_jumpTriggered) return (_isDay ? Red_JumpUp : Wolf_JumpUp);
 
-            if (_grounded) return _player.Input.x == 0 ? Wolf_Idle : Wolf_Run;
-            // if (_player.Speed.y > 0) return _wallJumped ? Backflip : Jump;
+            if (_grounded) return _player.Input.x == 0 ? (_isDay ? Red_Idle : Wolf_Idle) : (_isDay ? Red_Run : Wolf_Run);
 
-            if (_player.Speed.y > 1f) return Wolf_JumpUp;
-            if (_player.Speed.y < -1f) return Wolf_JumpDown;
+            if (_player.Speed.y > 1f) return (_isDay ? Red_JumpUp : Wolf_JumpUp);
+            if (_player.Speed.y < -1f) return (_isDay ? Red_JumpDown : Wolf_JumpDown);
 
-            // return _dismountedWall && _player.Input.x != 0 ? LockState(WallDismount, 0.167f) : Fall;
-            // TODO: If WallDismount looks/feels good enough to keep, we should add clip duration (0.167f) to Stats
-
-            return Wolf_JumpPeak;
+            return (_isDay ? Red_JumpPeak : Wolf_JumpPeak);
 
             int LockState(int s, float t)
             {
@@ -228,6 +237,7 @@ public class PlayerAnimator : MonoBehaviour
 
         void ResetFlags()
         {
+            _isDayChanged = false;
             _jumpTriggered = false;
             _landed = false;
             _hitWall = false;
@@ -254,6 +264,14 @@ public class PlayerAnimator : MonoBehaviour
     private static readonly int Wolf_WallSlide = Animator.StringToHash("Wolf_WallSlide");
     private static readonly int Wolf_WallRun = Animator.StringToHash("Wolf_RunWall");
 
+    private static readonly int Red_Idle = Animator.StringToHash("Red_Idle");
+    private static readonly int Red_Run = Animator.StringToHash("Red_Run");
+
+    private static readonly int Red_JumpUp = Animator.StringToHash("Red_JumpUp");
+    private static readonly int Red_JumpPeak = Animator.StringToHash("Red_JumpDown");
+    private static readonly int Red_JumpDown = Animator.StringToHash("Red_JumpDown");
+
+    private static readonly int ChangeForm = Animator.StringToHash("ChangeForm");
     #endregion
 
     #region Particles
