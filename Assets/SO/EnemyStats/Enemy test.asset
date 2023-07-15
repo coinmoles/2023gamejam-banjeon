@@ -32,6 +32,15 @@ MonoBehaviour:
   AirDeceleration: 30
   GroundingForce: -1.5
   GrounderDistance: 0.05
+  AllowLadders: 1
+  AutoAttachToLadders: 1
+  SnapToLadders: 1
+  LadderSnapTime: 0.05
+  LadderShimmySpeedMultiplier: 0.5
+  LadderClimbSpeed: 2
+  LadderSlideSpeed: 3
+  LadderCooldownTime: 0.5
+  LadderPopForce: 20
   JumpPower: 30
   MaxFallSpeed: 40
   FallAcceleration: 100

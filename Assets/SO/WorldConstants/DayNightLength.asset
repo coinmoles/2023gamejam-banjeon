@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: DayNightLength
   m_EditorClassIdentifier: 
   DeveloperDescription: Length of day night cycle
-  Value: 10
+  Value: 15

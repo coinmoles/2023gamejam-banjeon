@@ -290,7 +290,7 @@ Transform:
   - {fileID: 3847981348126824403}
   - {fileID: 4069962180396011363}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8210968258878700198
 MonoBehaviour:
@@ -305,15 +305,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicSounds:
-  - soundName: 
+  - soundName: main_theme
     clip: {fileID: 8300000, guid: a51b3f3b477c00646935ee64b2be6474, type: 3}
   sfxSounds:
-  - soundName: 
+  - soundName: swing
     clip: {fileID: 8300000, guid: c3e7ff1db4b8aa547b6070cd53f0bef4, type: 3}
-  - soundName: 
+  - soundName: wood_break
     clip: {fileID: 8300000, guid: 83b1b33ac91176f4192dd2aeab7bcbbd, type: 3}
-  - soundName: 
+  - soundName: metal_break
     clip: {fileID: 8300000, guid: f45cb5cadaa2c5f43be31559fa238313, type: 3}
+  - soundName: item_obtained
+    clip: {fileID: 8300000, guid: 753f840b62a971f479a7f3ee2020bd4f, type: 3}
   musicSource: {fileID: 8014864592035332840}
   sfxSource: {fileID: 3417505163173849670}
 --- !u!114 &315897630834523145
@@ -328,10 +330,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f56825872c2b04c8c0edff0d9d945c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameEvent: {fileID: 0}
+  GameEvent: {fileID: 11400000, guid: 415e7292072111847a32d299db498da2, type: 2}
   Response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8210968258878700198}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2838833893739727015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +358,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f56825872c2b04c8c0edff0d9d945c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameEvent: {fileID: 0}
+  GameEvent: {fileID: 11400000, guid: 720d1c86c6898f34788d168f926e0e05, type: 2}
   Response:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8210968258878700198}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayMusic
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

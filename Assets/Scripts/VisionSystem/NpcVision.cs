@@ -13,16 +13,20 @@ public class NpcVision : MonoBehaviour
     [SerializeField] private GameEvent _onDayStart;
 
     private ObjectController _objectController;
+    private NpcAI _npcAI;
 
     private void Awake()
     {
         _objectController = GetComponent<ObjectController>();
+        _npcAI = GetComponent<NpcAI>();
     }
 
     // Update is called once per frame
     private void FixedUpdate()
     {
         if (_isDay)
+            return;
+        if (_npcAI.GoState == GoState.OnLowerLevelLadder || _npcAI.GoState == GoState.OnHigherLevelLadder)
             return;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, _objectController.FaceLeft ? Vector2.left : Vector2.right, _detectionDistance, _playerLayer);

@@ -36,13 +36,11 @@ public class TimeManager : MonoBehaviour
     {
         _isDay.SetValue(true);
         _dayNightStart.SetValue(Time.time);
-        Debug.Log("Day now");
     }
 
     public void OnNightStart(Component sender, object data)
     {
         _isDay.SetValue(false);
         _dayNightStart.SetValue(Time.time);
-        Debug.Log("Night now");
     }
 }
