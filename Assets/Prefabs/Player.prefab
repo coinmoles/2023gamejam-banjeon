@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7541492592306420965}
   - component: {fileID: 5555065898654220421}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Visual
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -96,8 +96,7 @@ GameObject:
   - component: {fileID: 6118913192363692808}
   - component: {fileID: 8604177507962594872}
   - component: {fileID: 205671711124330506}
-  - component: {fileID: 4048309056220574948}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -118,6 +117,7 @@ Transform:
   m_Children:
   - {fileID: 7541492592306420965}
   - {fileID: 2576711628230788425}
+  - {fileID: 1518885516438851922}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -175,26 +175,60 @@ MonoBehaviour:
   _stats: {fileID: 11400000, guid: 9970cc2b0d1a9414d81c502b44890f8c, type: 2}
   _col: {fileID: 4674567453377269582}
   _faceLeft: 0
---- !u!114 &4048309056220574948
+  RedStats: {fileID: 11400000, guid: 881062efd26e55f48a013d62a94e795c, type: 2}
+  WolfStats: {fileID: 11400000, guid: 12bd3570c0bab984dacdd3b5c88ab41d, type: 2}
+--- !u!1 &1141340621758336169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1518885516438851922}
+  - component: {fileID: 6081250328882145941}
+  m_Layer: 9
+  m_Name: Interactor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1518885516438851922
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141340621758336169}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8869861434664642531}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6081250328882145941
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 259942830000997166}
+  m_GameObject: {fileID: 1141340621758336169}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0438d5eb4b44ca542a58e1ba42e16db4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _interactionPoint: {fileID: 8869861434664642531}
-  _interactionRadius: 2
+  _interactionPointOffset: {x: 0.5, y: 0}
+  _interactionRadius: 1
   _dayInteractableMask:
     serializedVersion: 2
     m_Bits: 2048
   _nightInteractableMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 4096
   _isDay:
     UseConstant: 0
     ConstantValue: 0
@@ -209,7 +243,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2576711628230788425}
   - component: {fileID: 4674567453377269582}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Collider
   m_TagString: Player
   m_Icon: {fileID: 0}

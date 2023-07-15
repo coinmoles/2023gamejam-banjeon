@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0.21875906, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -167,6 +167,8 @@ GameObject:
   - component: {fileID: 2755296722135122187}
   - component: {fileID: 3995983093700031242}
   - component: {fileID: 2028161696733860733}
+  - component: {fileID: 7766784175738520945}
+  - component: {fileID: 3779037432368844763}
   m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
@@ -280,6 +282,19 @@ MonoBehaviour:
     ConstantValue: 3
     Variable: {fileID: 0}
   _isEating: 0
+  _aggroEndTime: 0
+  _isDay:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: b484b3a4d5bb01443b56dc9b98b57c73, type: 2}
+  _dayNightStart:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: bd4c3cdcdfdc91b4ca3618a3cc02ab7c, type: 2}
+  _dayNightLength:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: 6450dceecfeebe646a6924ba00bf32fd, type: 2}
 --- !u!114 &3995983093700031242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -314,3 +329,56 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: b484b3a4d5bb01443b56dc9b98b57c73, type: 2}
+--- !u!114 &7766784175738520945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970093995648262021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8aeb00c08f4608458cab9f6d92b7f8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _detectionDistance:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e2d07780280de9e40b4346f787a438c5, type: 2}
+  _isDay:
+    UseConstant: 0
+    ConstantValue: 1
+    Variable: {fileID: 11400000, guid: b484b3a4d5bb01443b56dc9b98b57c73, type: 2}
+  _playerLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  _onPlayerHit: {fileID: 11400000, guid: 3819466204831414c8bba6e148398c3f, type: 2}
+  _onDayStart: {fileID: 11400000, guid: cf6eec4dc0a119649b487c0248138060, type: 2}
+--- !u!114 &3779037432368844763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970093995648262021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54f56825872c2b04c8c0edff0d9d945c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameEvent: {fileID: 11400000, guid: 3819466204831414c8bba6e148398c3f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2755296722135122187}
+        m_TargetAssemblyTypeName: NpcSnack, Assembly-CSharp
+        m_MethodName: OnPlayerHit
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2

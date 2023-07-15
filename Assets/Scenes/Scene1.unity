@@ -448,7 +448,7 @@ Transform:
   m_Children:
   - {fileID: 140991601}
   - {fileID: 742239464}
-  - {fileID: 342456623}
+  - {fileID: 308463424}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -640,6 +640,38 @@ CapsuleCollider2D:
   m_Offset: {x: -0.012718499, y: -0.07867473}
   m_Size: {x: 0.6224426, y: 0.84449923}
   m_Direction: 0
+--- !u!1 &308463423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 308463424}
+  m_Layer: 0
+  m_Name: WeaponHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &308463424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308463423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 342456623}
+  m_Father: {fileID: 113108799}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &342456622
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +683,7 @@ GameObject:
   - component: {fileID: 342456623}
   - component: {fileID: 342456625}
   - component: {fileID: 342456624}
+  - component: {fileID: 342456626}
   m_Layer: 0
   m_Name: WeaponVisual
   m_TagString: Untagged
@@ -665,12 +698,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 342456622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.555, y: -0.32, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 113108799}
+  m_Father: {fileID: 308463424}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &342456624
@@ -865,6 +898,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+
 --- !u!1 &742239463
 GameObject:
   m_ObjectHideFlags: 0
