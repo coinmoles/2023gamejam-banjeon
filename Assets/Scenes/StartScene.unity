@@ -272,6 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onPlaySFX: {fileID: 11400000, guid: 415e7292072111847a32d299db498da2, type: 2}
   light: {fileID: 753337132}
+  text: {fileID: 959619838}
 --- !u!1 &730769750
 GameObject:
   m_ObjectHideFlags: 0
@@ -690,9 +691,17 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8210968258878700198, guid: 68db7239ecc3a834d84cac07d667afc8, type: 3}
+      propertyPath: musicSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210968258878700198, guid: 68db7239ecc3a834d84cac07d667afc8, type: 3}
       propertyPath: sfxSounds.Array.data[3].clip
       value: 
       objectReference: {fileID: 8300000, guid: 0bf81b14d65a9e44e85f03aa491a4312, type: 3}
+    - target: {fileID: 8210968258878700198, guid: 68db7239ecc3a834d84cac07d667afc8, type: 3}
+      propertyPath: musicSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: c3f57c628bb0f71408272d2a65e59f96, type: 3}
     - target: {fileID: 8210968258878700198, guid: 68db7239ecc3a834d84cac07d667afc8, type: 3}
       propertyPath: sfxSounds.Array.data[0].soundName
       value: swing
@@ -708,6 +717,14 @@ PrefabInstance:
     - target: {fileID: 8210968258878700198, guid: 68db7239ecc3a834d84cac07d667afc8, type: 3}
       propertyPath: sfxSounds.Array.data[3].soundName
       value: wolf_howling
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210968258878700198, guid: 68db7239ecc3a834d84cac07d667afc8, type: 3}
+      propertyPath: musicSounds.Array.data[0].soundName
+      value: main_theme
+      objectReference: {fileID: 0}
+    - target: {fileID: 8210968258878700198, guid: 68db7239ecc3a834d84cac07d667afc8, type: 3}
+      propertyPath: musicSounds.Array.data[1].soundName
+      value: mystic
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
