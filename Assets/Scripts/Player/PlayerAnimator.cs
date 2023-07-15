@@ -46,7 +46,7 @@ public class PlayerAnimator : MonoBehaviour
 
     private bool _isDay;
     private bool _isDayChanged = false;
-    private float _changeAnimTime = 0.5f;
+    private float _changeAnimTime = 0.1f;
     private void OnDayChanged(bool isDay)
     {
         Debug.Log("IsDay" + isDay.ToString());
