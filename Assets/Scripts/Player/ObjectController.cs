@@ -90,6 +90,8 @@ public class ObjectController : MonoBehaviour, IPlayerController
     private bool _grounded;
     private Vector2 _skinWidth = new(0.02f, 0.02f);
 
+    public bool Grounded => _grounded;
+
     protected virtual void CheckCollisions()
     {
         _groundHitCount = Physics2D.CapsuleCastNonAlloc(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _groundHits, _stats.GrounderDistance, _stats.WallLayer);
