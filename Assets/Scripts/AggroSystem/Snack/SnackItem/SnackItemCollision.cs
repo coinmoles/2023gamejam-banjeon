@@ -8,6 +8,7 @@ public class SnackItemSnackHandler : MonoBehaviour
 {
     [SerializeField] private SnackSO _snackToGive;
     [SerializeField] private SnackVariable _currentHoldingSnack;
+    [SerializeField] private GameEvent _onPlaySFX;
 
 #if UNITY_EDITOR
     [Header("Debug")]
@@ -21,6 +22,7 @@ public class SnackItemSnackHandler : MonoBehaviour
             if (_currentHoldingSnack.Snack == null)
             {
                 _currentHoldingSnack.ObtainSnack(_snackToGive);
+                _onPlaySFX.Raise(this, "item_obtained");
                 Destroy(gameObject);
             }
         }
