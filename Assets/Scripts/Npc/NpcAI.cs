@@ -9,8 +9,6 @@ public abstract class NpcAI : MonoBehaviour
     {
         Move = new Vector2(0, 0)
     };
-
-
     private void Awake()
     {
         _npcWork = GetComponent<NpcWork>();
@@ -19,7 +17,6 @@ public abstract class NpcAI : MonoBehaviour
 
     public FrameInput GetFrameInput()
     {
-        Debug.Log("Buster");
         if (_npcSnack.IsEating)
             return NO_INPUT;
         else if (_npcWork.IsCheckingWork)
@@ -29,7 +26,6 @@ public abstract class NpcAI : MonoBehaviour
             };
         else if (_npcWork.IsGoingHome)
         {
-            Debug.Log("OK?");
             if (Mathf.Abs(_npcWork.HomePosition.x - transform.position.x) < 0.2f)
             {
                 _npcWork.HomeArrived();
