@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TargetInteractable : MonoBehaviour, IInteractable
 {
-    private string _prompt = "공격";
+    private string _prompt = "Attack";
 
     [SerializeField] private BoolReference _isDay;
 

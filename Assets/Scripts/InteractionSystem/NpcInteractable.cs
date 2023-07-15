@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class NpcInteractable : MonoBehaviour, IInteractable
 {
-    private string _prompt = "간식 주기";
+    private string _prompt = "Give";
     
     [SerializeField] private SnackVariable _snackVariable;
     [SerializeField] private BoolReference _isDay;
