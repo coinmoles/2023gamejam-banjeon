@@ -24,6 +24,8 @@ public abstract class AggroSlider<T>: MonoBehaviour where T: IAggroSlidable
     protected virtual void Update()
     {
         if (_aggroSlidable.IsAggro)
-            _slider.value = (_aggroSlidable.AggroEndTime - Time.time) /_aggroSlidable.MaxAggroTime;
+            _slider.value = (_aggroSlidable.AggroEndTime - Time.time) / _aggroSlidable.MaxAggroTime;
+        else if (_slider.value != 0)
+            _slider.value = 0;
     }
 }
