@@ -6,9 +6,6 @@ public class WorkObjectWorkHandler : MonoBehaviour
 {
     [SerializeField] private WorkSO _linkedWork;
 
-    [Header("Debug")]
-    public float Delay;
-
     private void Start()
     {
         _linkedWork.EndTime = 0;
@@ -24,10 +21,10 @@ public class WorkObjectWorkHandler : MonoBehaviour
         }
     }
 
-    public void WorkSabotaged(float delay)
+    public void WorkSabotaged()
     {
         enabled = true;
-        _linkedWork.Sabotaged(delay);
+        _linkedWork.Sabotaged();
     }
 }
 
@@ -45,7 +42,7 @@ public class WorkObjectEditor : Editor
         GUI.enabled = Application.isPlaying;
         if (GUILayout.Button("Sabotage"))
         {
-            workObject.WorkSabotaged(workObject.Delay);
+            workObject.WorkSabotaged();
         }
 
         serializedObject.ApplyModifiedProperties();

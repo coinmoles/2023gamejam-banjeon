@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b22022fad98cbd47ae32dcff64efa0f, type: 3}
-  m_Name: IsDay
+  m_Script: {fileID: 11500000, guid: 9e03701cba1e47c45a6eae4103739069, type: 3}
+  m_Name: AggroTimeAdded
   m_EditorClassIdentifier: 
-  DeveloperDescription: Is it day
-  Value: 0
+  DeveloperDescription: Aggro time added to npc workers for each hit on worker object
+  Value: 3

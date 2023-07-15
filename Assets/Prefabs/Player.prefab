@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 6118913192363692808}
   - component: {fileID: 8604177507962594872}
   - component: {fileID: 205671711124330506}
+  - component: {fileID: 4048309056220574948}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -110,7 +111,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 259942830000997166}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -173,6 +174,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 9970cc2b0d1a9414d81c502b44890f8c, type: 2}
   _col: {fileID: 4674567453377269582}
+  _faceLeft: 0
+--- !u!114 &4048309056220574948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259942830000997166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0438d5eb4b44ca542a58e1ba42e16db4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _interactionPoint: {fileID: 8869861434664642531}
+  _interactionRadius: 2
+  _dayInteractableMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _nightInteractableMask:
+    serializedVersion: 2
+    m_Bits: 2048
+  _isDay:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: b484b3a4d5bb01443b56dc9b98b57c73, type: 2}
 --- !u!1 &7397394654602420627
 GameObject:
   m_ObjectHideFlags: 0

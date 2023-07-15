@@ -14,8 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorkName: 
   WorkPosition: {x: -7.88, y: -0.78}
-  EndTime: 0
-  MaxDelay:
+  EndTime: 53.12526
+  AggroTimeAdded:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: cafc5d4025e5d9d45ba8cb50849332db, type: 2}
+  MaxAggroTime:
     UseConstant: 1
     ConstantValue: 10
     Variable: {fileID: 0}

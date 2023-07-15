@@ -14,19 +14,22 @@ public class NpcSnack : MonoBehaviour
     public bool IsEating => _isEating;
 
     #region Snack Functions
-    private bool IsLikedSnack(SnackSO snack)
+    public bool IsLikedSnack(SnackSO snack)
     {
         return snack == _likedSnack;
     }
 
-    public void GivenSnack(SnackSO snack)
+    public bool GivenSnack(SnackSO snack)
     {
         if (snack == _likedSnack && !_isEating)
         {
             _isEating = true;
             StartCoroutine(EndEating());
+            return true;
         }
+        return false;
     }
+
     private IEnumerator EndEating()
     {
         yield return new WaitForSeconds(_snackAggroTime);

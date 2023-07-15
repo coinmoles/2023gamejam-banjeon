@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3579921421787940139}
   - component: {fileID: 405456993972009377}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9046593847593887067}
   - component: {fileID: 1404131881092913809}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,8 @@ GameObject:
   - component: {fileID: 8578631387991853006}
   - component: {fileID: 2755296722135122187}
   - component: {fileID: 3995983093700031242}
-  m_Layer: 0
+  - component: {fileID: 2028161696733860733}
+  m_Layer: 11
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +181,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7970093995648262021}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.9, y: 1.52, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -243,6 +244,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 4e26f34c25c00124481dbf0101e4e06d, type: 2}
   _col: {fileID: 1404131881092913809}
+  _faceLeft: 0
 --- !u!114 &8578631387991853006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,7 +260,7 @@ MonoBehaviour:
   inputVector: {x: 1, y: 0}
   _wariGariInterval:
     UseConstant: 1
-    ConstantValue: 0.2
+    ConstantValue: 1
     Variable: {fileID: 0}
 --- !u!114 &2755296722135122187
 MonoBehaviour:
@@ -294,3 +296,21 @@ MonoBehaviour:
   _isWorking: 0
   _isGoingHome: 0
   _homeLocation: {x: 0, y: 0}
+--- !u!114 &2028161696733860733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7970093995648262021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c470cf1aa2f5e0748b27dded2fd52253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _prompt: 
+  _snackVariable: {fileID: 11400000, guid: 086ef6a7216f95a4faefebb2ff92ce80, type: 2}
+  _isDay:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: b484b3a4d5bb01443b56dc9b98b57c73, type: 2}

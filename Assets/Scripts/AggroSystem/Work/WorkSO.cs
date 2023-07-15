@@ -8,7 +8,8 @@ public class WorkSO : ScriptableObject
     public string WorkName;
     public Vector2 WorkPosition;
     public float EndTime = 0;
-    public FloatReference MaxDelay;
+    public FloatReference AggroTimeAdded;
+    public FloatReference MaxAggroTime;
     public List<NpcWork> npcWorkListeners = new List<NpcWork>();
 
     public void RegisterListener(NpcWork listener)
@@ -23,18 +24,18 @@ public class WorkSO : ScriptableObject
             npcWorkListeners.Remove(listener);
     }
 
-    public void Sabotaged(float delay)
+    public void Sabotaged()
     {
         if (EndTime < Time.time)
         {
-            EndTime = Mathf.Clamp(Time.time + delay, 0, Time.time + MaxDelay);
+            EndTime = Mathf.Clamp(Time.time + AggroTimeAdded, 0, Time.time + MaxAggroTime);
             foreach (NpcWork npcWork in npcWorkListeners)
             {
                 npcWork.OnWorkSabotaged();
             }
         }
         else
-            EndTime = Mathf.Clamp(EndTime + delay, 0, Time.time + MaxDelay);
+            EndTime = Mathf.Clamp(EndTime + AggroTimeAdded, 0, Time.time + MaxAggroTime);
     }
 
     public void Ended()

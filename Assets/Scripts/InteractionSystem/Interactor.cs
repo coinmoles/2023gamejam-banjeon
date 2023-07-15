@@ -1,15 +1,23 @@
+using ScriptableObjectVariable;
 using UnityEngine;
 
 public class Interactor : MonoBehaviour
 {
+    [Header("Interaction Config")]
     [SerializeField] private Transform _interactionPoint;
     [SerializeField] private float _interactionRadius;
-    [SerializeField] private LayerMask _interactableMask;
+    [SerializeField] private LayerMask _dayInteractableMask;
+    [SerializeField] private LayerMask _nightInteractableMask;
+
+    [Header("Game State")]
+    [SerializeField] private BoolReference _isDay;
+
+    public LayerMask InteractableMask { get { return _isDay ? _dayInteractableMask : _nightInteractableMask; } }
 
     // Start is called before the first frame update
     private void Update()
     {
-        Collider2D collider = Physics2D.OverlapCircle(_interactionPoint.position, _interactionRadius, _interactableMask);
+        Collider2D collider = Physics2D.OverlapCircle(_interactionPoint.position, _interactionRadius, InteractableMask);
 
         if (collider == null)
             return;
@@ -19,8 +27,15 @@ public class Interactor : MonoBehaviour
         if (interactable == null)
             return;
 
-        if (Input.GetKeyDown(KeyCode.X))
-            interactable.Interact(this);
+
+        if (!interactable.IsInteractable)
+        {
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.X))
+                interactable.Interact(this);
+        }
     }
 
     private void OnDrawGizmos()
