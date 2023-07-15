@@ -22,9 +22,14 @@ public class NpcController : ObjectController
 
         CheckCollisions();
         HandleCollisions();
+        HandleLadders();
         HandleWalls();
 
+        HandleJump();
         ApplyMovement();
+        HandleJump();
+
+        HandleActions();
 
         HandleHorizontal();
         HandleVertical();

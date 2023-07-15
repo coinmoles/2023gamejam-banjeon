@@ -10,6 +10,8 @@ public class NpcWork : MonoBehaviour, IAggroSlidable
     [SerializeField] private bool _isGoingHome;
     [SerializeField] private Vector2 _homeLocation;
 
+    private NpcAI _npcAI;
+
 
     public bool IsAggro => _isWorking;
     public float MaxAggroTime => _linkedWork.MaxAggroTime;
@@ -22,6 +24,12 @@ public class NpcWork : MonoBehaviour, IAggroSlidable
     public Vector2 HomePosition => _homeLocation;
 
     #region Lifecycle Functions
+
+    private void Awake()
+    {
+        _npcAI = GetComponent<NpcAI>();
+    }
+
     private void Start()
     {
         _homeLocation = transform.position;
@@ -43,17 +51,20 @@ public class NpcWork : MonoBehaviour, IAggroSlidable
     {
         _isWorking = true;
         _isGoingHome = false;
+        _npcAI.GoState = GoState.JustStarted;
     }
 
     public void OnWorkEnded()
     {
         _isWorking = false;
         _isGoingHome = true;
+        _npcAI.GoState = GoState.JustStarted;
     }
 
     public void HomeArrived()
     {
         _isGoingHome = false;
+        _npcAI.GoState = GoState.JustStarted;
     }
     #endregion
 }

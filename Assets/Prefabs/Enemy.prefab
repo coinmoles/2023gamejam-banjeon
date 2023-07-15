@@ -878,6 +878,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8fef4f984f5def43b601f33b835b83f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _ladderX:
+    UseConstant: 0
+    ConstantValue: 0
+    Variable: {fileID: 11400000, guid: e0767d7d582ccf941a327caac43be805, type: 2}
+  GoState: 0
   inputVector: {x: 1, y: 0}
   _wariGariInterval:
     UseConstant: 1

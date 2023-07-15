@@ -10,11 +10,13 @@ public class VisionPizzaControl : MonoBehaviour
     private Vector3 _initialLocalPosition;
     private Vector3 _initialLocalScale;
     private GameObject _player;
+    private NpcAI _npcAI;
 
     private void Awake()
     {
         _objectController = GetComponentInParent<ObjectController>();
         _renderer = GetComponent<SpriteRenderer>();
+        _npcAI = GetComponentInParent<NpcAI>();
     }
 
     private void Start ()
@@ -33,6 +35,12 @@ public class VisionPizzaControl : MonoBehaviour
             else
                 transform.localScale = _initialLocalScale;
         }
+        if (_npcAI.GoState == GoState.OnLowerLevelLadder || _npcAI.GoState == GoState.OnHigherLevelLadder)
+        {
+            transform.localScale = Vector3.zero;
+        }
+        else
+            transform.localScale = _initialLocalScale;
 
         transform.localPosition = new Vector2(_initialLocalPosition.x * (_objectController.FaceLeft ? 1 : -1), _initialLocalPosition.y);
         _renderer.flipX = !_objectController.FaceLeft;

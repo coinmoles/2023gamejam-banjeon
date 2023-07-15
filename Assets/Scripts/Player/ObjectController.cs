@@ -371,7 +371,6 @@ public class ObjectController : MonoBehaviour, IPlayerController
         else if (_speed.x > 0.1f)
             _faceLeft = false;
     }
-
 }
 
 public interface IPlayerController
