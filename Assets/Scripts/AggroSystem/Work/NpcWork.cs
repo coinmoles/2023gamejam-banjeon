@@ -1,8 +1,6 @@
-using ScriptableObjectVariable;
-using System.Collections;
 using UnityEngine;
 
-public class NpcWork : MonoBehaviour
+public class NpcWork : MonoBehaviour, IAggroSlidable
 {
     [Header("Aggro Data")]
     [SerializeField] private WorkSO _linkedWork;
@@ -12,8 +10,14 @@ public class NpcWork : MonoBehaviour
     [SerializeField] private bool _isGoingHome;
     [SerializeField] private Vector2 _homeLocation;
 
-    public bool IsCheckingWork => _isWorking;
+
+    public bool IsAggro => _isWorking;
+    public float MaxAggroTime => _linkedWork.MaxAggroTime;
+    public float AggroEndTime => _linkedWork.EndTime;
+    public Sprite AggroSliderImage => _linkedWork.WorkImage;
+
     public bool IsGoingHome => _isGoingHome;
+    
     public Vector2 WorkPosition => _linkedWork.WorkPosition;
     public Vector2 HomePosition => _homeLocation;
 

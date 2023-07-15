@@ -9,8 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 505d39fcbdd12c94fbafe9c2bc28ebb8, type: 3}
-  m_Name: Snack 1
+  m_Script: {fileID: 11500000, guid: 5d40b1c70b8969d4c954796c0c2638c1, type: 3}
+  m_Name: PlayerCurrentHealth
   m_EditorClassIdentifier: 
-  SnackName: Snack Test
-  SnackImage: {fileID: 21300000, guid: 629c5ec024d44c8489c107b377d32c1b, type: 3}
+  DeveloperDescription: Player's current health
+  Value: 3
+  _initialValue: 3
+  _resettableRuntimeSet: {fileID: 11400000, guid: 5508c5fa628c09e4b9ec3ad44beb1d8b, type: 2}
