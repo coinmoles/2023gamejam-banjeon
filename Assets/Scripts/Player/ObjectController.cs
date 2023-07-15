@@ -87,9 +87,9 @@ public class ObjectController : MonoBehaviour, IPlayerController
 
         _hittingWall = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, new Vector2(FrameInput.Move.x, 0), _stats.GrounderDistance, ~_stats.PlayerLayer);
 
-        Physics2D.queriesHitTriggers = true; // Ladders are set to Trigger
+        // Physics2D.queriesHitTriggers = true; // Ladders are set to Trigger
         _ladderHitCount = Physics2D.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, _ladderHits, _stats.LadderLayer);
-        Physics2D.queriesHitTriggers = false;
+        // Physics2D.queriesHitTriggers = false;
     }
 
     protected virtual Bounds GetWallDetectionBounds()
@@ -135,7 +135,7 @@ public class ObjectController : MonoBehaviour, IPlayerController
     #region Ladders
 
     private Vector2 _ladderSnapVel;
-    private float _timeLeftLadder;
+    private float _timeLeftLadder = float.MinValue;
 
     protected virtual bool CanEnterLadder => _ladderHitCount > 0 && _fixedTime > _timeLeftLadder + _stats.LadderCooldownTime;
     protected virtual bool ShouldMountLadder => _stats.AutoAttachToLadders || FrameInput.Move.y > _stats.VerticalDeadzoneThreshold || (!_grounded && FrameInput.Move.y < -_stats.VerticalDeadzoneThreshold);
@@ -144,10 +144,11 @@ public class ObjectController : MonoBehaviour, IPlayerController
     
     protected virtual void HandleLadders()
     {
+        // Debug.Log(CanEnterLadder);
         if (!_stats.AllowLadders) return;
 
-        if (!ClimbingLadder && CanEnterLadder && ShouldDismountLadder) ToggleClimingLadder(true);
-        else if (ClimbingLadder && (_ladderHitCount == 0 || ShouldDismountLadder)) ToggleClimingLadder(false);
+        if (!ClimbingLadder && CanEnterLadder && ShouldMountLadder) ToggleClimbingLadder(true);
+        else if (ClimbingLadder && (_ladderHitCount == 0 || ShouldDismountLadder)) ToggleClimbingLadder(false);
         
         if (ClimbingLadder && ShouldCenterOnLadder)
         {
@@ -157,8 +158,9 @@ public class ObjectController : MonoBehaviour, IPlayerController
         }
     }
 
-    private void ToggleClimingLadder(bool on)
+    private void ToggleClimbingLadder(bool on)
     {
+        Debug.Log(on);
         if (ClimbingLadder == on) return;
 
         if (on)
@@ -246,7 +248,7 @@ public class ObjectController : MonoBehaviour, IPlayerController
         if (!_jumpToConsume && !HasBufferedJump) return;
 
         if (CanWallJump) WallJump();
-        else if (_grounded || CanUseCoyote) NormalJump();
+        else if (_grounded || ClimbingLadder || CanUseCoyote) NormalJump();
 
         _jumpToConsume = false; // Always consume the flag
     }
@@ -257,6 +259,7 @@ public class ObjectController : MonoBehaviour, IPlayerController
         _timeJumpWasPressed = 0;
         _bufferedJumpUsable = false;
         _coyoteUsable = false;
+        ToggleClimbingLadder(false);
         _speed.y = _stats.JumpPower;
         Jumped?.Invoke(false);
     }
@@ -295,7 +298,7 @@ public class ObjectController : MonoBehaviour, IPlayerController
         {
             if (_hittingWall.collider && Mathf.Abs(_rb.velocity.x) < 0.01f && !_isLeavingWall) _speed.x = 0;
 
-            var xInput = FrameInput.Move.x;
+            var xInput = FrameInput.Move.x * (ClimbingLadder ? _stats.LadderShimmySpeedMultiplier : 1);
             _speed.x = Mathf.MoveTowards(_speed.x, xInput * _stats.MaxSpeed, _currentWallJumpMoveMultiplier * _stats.Acceleration * Time.fixedDeltaTime);
         }
     }
@@ -304,8 +307,14 @@ public class ObjectController : MonoBehaviour, IPlayerController
     #region Vertical
     protected virtual void HandleVertical()
     {
+        // Debug.Log(ClimbingLadder);
+        if (ClimbingLadder)
+        {
+            var yInput = FrameInput.Move.y;
+            _speed.y = yInput * (yInput > 0 ? _stats.LadderClimbSpeed : _stats.LadderSlideSpeed);
+        }
         // Grounded & Slopes
-        if (_grounded && _speed.y <= 0f)
+        else if (_grounded && _speed.y <= 0f)
         {
             _speed.y = _stats.GroundingForce;
 
