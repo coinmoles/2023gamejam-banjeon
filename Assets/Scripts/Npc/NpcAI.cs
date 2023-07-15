@@ -2,37 +2,37 @@ using UnityEngine;
 
 public abstract class NpcAI : MonoBehaviour
 {
-    private NpcAggro _npcAggro;
+    private NpcWork _npcWork;
+    private NpcSnack _npcSnack;
 
     protected readonly FrameInput NO_INPUT = new FrameInput()
     {
         Move = new Vector2(0, 0)
     };
-
-
     private void Awake()
     {
-        _npcAggro = GetComponent<NpcAggro>();
+        _npcWork = GetComponent<NpcWork>();
+        _npcSnack = GetComponent<NpcSnack>();
     }
 
     public FrameInput GetFrameInput()
     {
-        if (_npcAggro.IsEating)
+        if (_npcSnack.IsEating)
             return NO_INPUT;
-        else if (_npcAggro.IsCheckingWork)
+        else if (_npcWork.IsCheckingWork)
             return new FrameInput()
             {
-                Move = new Vector2(CalcDirToLocation(_npcAggro.WorkLocation), 0)
+                Move = new Vector2(CalcDirToLocation(_npcWork.WorkPosition), 0)
             };
-        else if (_npcAggro.IsGoingHome)
+        else if (_npcWork.IsGoingHome)
         {
-            if (Mathf.Abs(_npcAggro.HomeLocation.x - transform.position.x) < 0.2f)
+            if (Mathf.Abs(_npcWork.HomePosition.x - transform.position.x) < 0.2f)
             {
-                _npcAggro.HomeArrived();
+                _npcWork.HomeArrived();
             }
             return new FrameInput()
             {
-                Move = new Vector2(CalcDirToLocation(_npcAggro.HomeLocation), 0)
+                Move = new Vector2(CalcDirToLocation(_npcWork.HomePosition), 0)
             };
         }
 

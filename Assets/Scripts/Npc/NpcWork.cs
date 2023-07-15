@@ -1,13 +1,55 @@
+using ScriptableObjectVariable;
+using System.Collections;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "NpcAggro/NpcWork")]
-public class NpcWork : ScriptableObject
+public class NpcWork : MonoBehaviour
 {
-    public string WorkName;
-}
+    [Header("Aggro Data")]
+    [SerializeField] private WorkSO _linkedWork;
 
-public struct WorkAndLoc
-{
-    public NpcWork work;
-    public Vector2 location;
-};
+    [Header("Aggro State")]
+    [SerializeField] private bool _isWorking;
+    [SerializeField] private bool _isGoingHome;
+    [SerializeField] private Vector2 _homeLocation;
+
+    public bool IsCheckingWork => _isWorking;
+    public bool IsGoingHome => _isGoingHome;
+    public Vector2 WorkPosition => _linkedWork.WorkPosition;
+    public Vector2 HomePosition => _homeLocation;
+
+    #region Lifecycle Functions
+    private void Start()
+    {
+        _homeLocation = transform.position;
+    }
+
+    private void OnEnable()
+    {
+        _linkedWork.RegisterListener(this);
+    }
+
+    private void OnDisable()
+    {
+        _linkedWork.UnregisterListener(this);
+    }
+    #endregion
+
+    #region Work Functions
+    public void OnWorkSabotaged()
+    {
+        _isWorking = true;
+        _isGoingHome = false;
+    }
+
+    public void OnWorkEnded()
+    {
+        _isWorking = false;
+        _isGoingHome = true;
+    }
+
+    public void HomeArrived()
+    {
+        _isGoingHome = false;
+    }
+    #endregion
+}

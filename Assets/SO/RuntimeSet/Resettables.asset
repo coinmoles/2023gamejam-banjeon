@@ -7,9 +7,11 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0531c2dd67c8a1345a5840201af5ce91, type: 3}
-  m_Name: CurrentHoldingSnack
+  m_Script: {fileID: 11500000, guid: d4b63678d7024e143bad1b3ffbe9d31a, type: 3}
+  m_Name: Resettables
   m_EditorClassIdentifier: 
-  _resettableRuntimeSet: {fileID: 11400000, guid: 5508c5fa628c09e4b9ec3ad44beb1d8b, type: 2}
+  Items:
+  - {fileID: 11400000, guid: bd4c3cdcdfdc91b4ca3618a3cc02ab7c, type: 2}
+  - {fileID: 11400000, guid: 086ef6a7216f95a4faefebb2ff92ce80, type: 2}

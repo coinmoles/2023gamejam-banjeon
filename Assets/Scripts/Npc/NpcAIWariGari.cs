@@ -2,7 +2,7 @@ using ScriptableObjectVariable;
 using System.Collections;
 using UnityEngine;
 
-public class WariGariNpcAI : NpcAI
+public class NpcAIWariGari : NpcAI
 {
     [SerializeField] private Vector2 inputVector;
     [SerializeField] private FloatReference _wariGariInterval;
