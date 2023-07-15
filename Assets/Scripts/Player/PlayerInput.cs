@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour
 
             Move = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")),
 
+            ActionDown = Input.GetKeyDown(KeyCode.X),
             ChangeDown = Input.GetKeyDown(KeyCode.Z)
         };
     }
@@ -34,5 +35,6 @@ public struct FrameInput
     public bool JumpHeld;
     public bool JumpUp;
 
+    public bool ActionDown;
     public bool ChangeDown;
 }
