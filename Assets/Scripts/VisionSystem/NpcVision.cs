@@ -26,7 +26,7 @@ public class NpcVision : MonoBehaviour
             return;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, _objectController.FaceLeft ? Vector2.left : Vector2.right, _detectionDistance, _playerLayer);
-
+        
         if (hit.collider != null)
             if (hit.collider.gameObject.CompareTag("Player"))
             {
@@ -38,7 +38,7 @@ public class NpcVision : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!_isDay)
-        if (_objectController != null)
-            Gizmos.DrawLine(transform.position, (Vector2)transform.position + (_objectController.FaceLeft ? Vector2.left : Vector2.right) * _detectionDistance);
+            if (_objectController != null)
+                Gizmos.DrawLine(transform.position, (Vector2)transform.position + (_objectController.FaceLeft ? Vector2.left : Vector2.right) * _detectionDistance);
     }
 }
