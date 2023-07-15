@@ -24,6 +24,7 @@ public class Interactor : MonoBehaviour
     // Start is called before the first frame update
     private void Update()
     {
+        transform.localPosition = _interactionPointOffset * (_playerController.FaceLeft ? -1 : 1);
         Collider2D collider = Physics2D.OverlapCircle(transform.position, _interactionRadius, InteractableMask);
 
         if (collider == null)
@@ -43,11 +44,6 @@ public class Interactor : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.X))
                 interactable.Interact(this);
         }
-    }
-
-    private void FixedUpdate()
-    {
-        transform.localPosition = _interactionPointOffset * (_playerController.FaceLeft ? - 1 : 1);
     }
 
     private void OnDrawGizmos()
