@@ -27,7 +27,6 @@ public class DayNightClock : MonoBehaviour
     private void Update()
     {
         float timeFromDayNightStart = Time.time - _dayNightStart;
-        Debug.Log(_currentSpriteIndex * UnitTime);
         if (timeFromDayNightStart > (_currentSpriteIndex + 1) * UnitTime)
         {
             _currentSpriteIndex = (_currentSpriteIndex + 1) % _sprites.Count;
