@@ -312,6 +312,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4374380523562134306, guid: 8c1734a40ffa71f43bb5e25f4917c119, type: 3}
+      propertyPath: sfxSounds.Array.data[0].soundName
+      value: swing
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374380523562134306, guid: 8c1734a40ffa71f43bb5e25f4917c119, type: 3}
+      propertyPath: sfxSounds.Array.data[1].soundName
+      value: wood_break
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374380523562134306, guid: 8c1734a40ffa71f43bb5e25f4917c119, type: 3}
+      propertyPath: sfxSounds.Array.data[2].soundName
+      value: metal_break
+      objectReference: {fileID: 0}
+    - target: {fileID: 4374380523562134306, guid: 8c1734a40ffa71f43bb5e25f4917c119, type: 3}
+      propertyPath: musicSounds.Array.data[0].soundName
+      value: theme
+      objectReference: {fileID: 0}
     - target: {fileID: 6499444577423853703, guid: 8c1734a40ffa71f43bb5e25f4917c119, type: 3}
       propertyPath: m_Name
       value: GameManager
