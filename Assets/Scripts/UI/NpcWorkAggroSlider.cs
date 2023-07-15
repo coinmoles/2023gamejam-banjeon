@@ -1,17 +1,17 @@
-using UnityEngine;
-using UnityEngine.UI;
-
-public class NpcWorkAggroSlider : AggroSlider
+public class NpcWorkAggroSlider : AggroSlider<NpcWork> 
 {
-    [SerializeField] private WorkSO _linkedWork;
-
-    protected override bool IsAggro { get { return _linkedWork.EndTime > Time.time; } }
-    protected override float MaxAggroTime { get { return _linkedWork.MaxAggroTime; } }
-    protected override float AggroEndTime { get { return _linkedWork.EndTime; } }
+    private NpcSnack _npcSnack;
 
     protected override void Awake()
     {
         base.Awake();
-        _linkedWork = GetComponentInParent<NpcWork>().LinkedWork;
+        _npcSnack = GetComponentInParent<NpcSnack>();
+    }
+
+    protected override void Update()
+    {
+        if (_npcSnack.IsAggro)
+            return;
+        base.Update();
     }
 }

@@ -19,7 +19,7 @@ public abstract class NpcAI : MonoBehaviour
     {
         if (_npcSnack.IsEating)
             return NO_INPUT;
-        else if (_npcWork.IsCheckingWork)
+        else if (_npcWork.IsAggro)
             return new FrameInput()
             {
                 Move = new Vector2(CalcDirToLocation(_npcWork.WorkPosition), 0)
