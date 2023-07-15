@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : ObjectController
@@ -40,6 +41,8 @@ public class PlayerController : ObjectController
         ApplyMovement();
         HandleJump();
 
+        HandleActions();
+
         HandleHorizontal();
         HandleVertical();
         ApplyMovement();
@@ -54,6 +57,10 @@ public class PlayerController : ObjectController
             _jumpToConsume = true;
             _timeJumpWasPressed = _fixedTime;
         }
+        if(FrameInput.ActionDown)
+        {
+            _actionToConsume = true;
+        }
     }
 
     #region DayNight
@@ -63,5 +70,14 @@ public class PlayerController : ObjectController
         base.ToggleChanged(isDay);
         _stats = isDay ? RedStats : WolfStats;
     }
+    #endregion
+
+    #region Actions
+
+    protected override void HandleActions()
+    {
+        base.HandleActions();
+    }
+
     #endregion
 }

@@ -17,6 +17,8 @@ public class ObjectController : MonoBehaviour, IPlayerController
     protected float _fixedTime;
     protected bool _hasControl = true;
 
+    protected bool _isDay;
+
     [SerializeField] protected bool _faceLeft = false;
     #endregion
 
@@ -27,6 +29,7 @@ public class ObjectController : MonoBehaviour, IPlayerController
 
     // Additional
     public event Action<bool> DayChanged;
+    public event Action<bool> OnAction;
 
     public PlayerStatsSO Stats => _stats;
     public Vector2 Input => FrameInput.Move;
@@ -46,11 +49,24 @@ public class ObjectController : MonoBehaviour, IPlayerController
         
     }
 
+    #region Actions
+
+    protected bool _actionToConsume;
+
+    protected virtual void HandleActions()
+    {
+        if (!_actionToConsume) return;
+        OnAction?.Invoke(_isDay);
+    }
+
+    #endregion
+
     #region DayNight
 
     protected virtual void ToggleChanged(bool isDay)
     {
         // Debug.Log(isDay);
+        _isDay = isDay;
         DayChanged?.Invoke(isDay);
     }
 
@@ -365,6 +381,7 @@ public interface IPlayerController
     public event Action<bool> WallGrabChanged;
     public event Action<bool> Jumped; // Is wall jump
     public event Action<bool> DayChanged; // isDay
+    public event Action<bool> OnAction;
 
     public PlayerStatsSO Stats { get; }
     public Vector2 Input { get; }
