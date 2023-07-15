@@ -51,11 +51,12 @@ public class ObjectController : MonoBehaviour, IPlayerController
 
     #region Actions
 
-    protected bool _actionToConsume;
+    protected bool _actionToConsume = false;
 
     protected virtual void HandleActions()
     {
         if (!_actionToConsume) return;
+        _actionToConsume = false;
         OnAction?.Invoke(_isDay);
     }
 
@@ -176,7 +177,7 @@ public class ObjectController : MonoBehaviour, IPlayerController
 
     private void ToggleClimbingLadder(bool on)
     {
-        Debug.Log(on);
+        // Debug.Log(on);
         if (ClimbingLadder == on) return;
 
         if (on)
