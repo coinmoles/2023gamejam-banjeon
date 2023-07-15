@@ -34,6 +34,7 @@ public class ObjectController : MonoBehaviour, IPlayerController
     public Vector2 Speed => _speed;
     public Vector2 GroundNormal { get; private set; }
     public int WallDirection { get; private set; }
+    public bool ClimbingLadder { get; private set; }
     public bool Hiding { get; private set; }
 
     public bool FaceLeft => _faceLeft;
@@ -63,11 +64,13 @@ public class ObjectController : MonoBehaviour, IPlayerController
     private RaycastHit2D[] _groundHits = new RaycastHit2D[2];
     private RaycastHit2D[] _ceilingHits = new RaycastHit2D[2];
     private readonly Collider2D[] _wallHits = new Collider2D[2];
+    private readonly Collider2D[] _ladderHits = new Collider2D[2];
     private RaycastHit2D _hittingWall;
 
     private int _groundHitCount;
     private int _ceilingHitCount;
     private int _wallHitCount;
+    private int _ladderHitCount;
 
     private float _timeLeftGrounded = float.MinValue;
     private bool _grounded;
@@ -83,6 +86,10 @@ public class ObjectController : MonoBehaviour, IPlayerController
         _wallHitCount = Physics2D.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, _wallHits, _stats.ClimbableLayer);
 
         _hittingWall = Physics2D.CapsuleCast(_col.bounds.center, _col.size, _col.direction, 0, new Vector2(FrameInput.Move.x, 0), _stats.GrounderDistance, ~_stats.PlayerLayer);
+
+        Physics2D.queriesHitTriggers = true; // Ladders are set to Trigger
+        _ladderHitCount = Physics2D.OverlapBoxNonAlloc(bounds.center, bounds.size, 0, _ladderHits, _stats.LadderLayer);
+        Physics2D.queriesHitTriggers = false;
     }
 
     protected virtual Bounds GetWallDetectionBounds()
@@ -123,6 +130,50 @@ public class ObjectController : MonoBehaviour, IPlayerController
         }
     }
 
+    #endregion
+
+    #region Ladders
+
+    private Vector2 _ladderSnapVel;
+    private float _timeLeftLadder;
+
+    protected virtual bool CanEnterLadder => _ladderHitCount > 0 && _fixedTime > _timeLeftLadder + _stats.LadderCooldownTime;
+    protected virtual bool ShouldMountLadder => _stats.AutoAttachToLadders || FrameInput.Move.y > _stats.VerticalDeadzoneThreshold || (!_grounded && FrameInput.Move.y < -_stats.VerticalDeadzoneThreshold);
+    protected virtual bool ShouldDismountLadder => !_stats.AutoAttachToLadders && _grounded && FrameInput.Move.y < -_stats.VerticalDeadzoneThreshold;
+    protected virtual bool ShouldCenterOnLadder => _stats.SnapToLadders && FrameInput.Move.x == 0 && _hasControl;
+    
+    protected virtual void HandleLadders()
+    {
+        if (!_stats.AllowLadders) return;
+
+        if (!ClimbingLadder && CanEnterLadder && ShouldDismountLadder) ToggleClimingLadder(true);
+        else if (ClimbingLadder && (_ladderHitCount == 0 || ShouldDismountLadder)) ToggleClimingLadder(false);
+        
+        if (ClimbingLadder && ShouldCenterOnLadder)
+        {
+            var pos = _rb.position;
+            var targetX = _ladderHits[0].transform.position.x;
+            _rb.position = Vector2.SmoothDamp(pos, new Vector2(targetX, pos.y), ref _ladderSnapVel, _stats.LadderSnapTime);
+        }
+    }
+
+    private void ToggleClimingLadder(bool on)
+    {
+        if (ClimbingLadder == on) return;
+
+        if (on)
+        {
+            _speed = Vector2.zero;
+            _ladderSnapVel = Vector2.zero;
+        }
+        else
+        {
+            if (_ladderHitCount > 0) _timeLeftLadder = _fixedTime;
+            if (FrameInput.Move.y > 0) _speed.y += _stats.LadderPopForce;
+        }
+
+        ClimbingLadder = on;
+    }
     #endregion
 
     #region Walls
@@ -312,4 +363,5 @@ public interface IPlayerController
     public Vector2 Velocity { get; }
     public Vector2 GroundNormal { get; }
     public int WallDirection { get; }
+    public bool ClimbingLadder { get; }
 }

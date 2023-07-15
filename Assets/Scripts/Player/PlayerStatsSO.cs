@@ -31,6 +31,17 @@ public class PlayerStatsSO: ScriptableObject
     public float GroundingForce = -1.5f;
     public float GrounderDistance = 0.05f;
 
+    [Header("Ladders")]
+    public bool AllowLadders = true;
+    public bool AutoAttachToLadders = true;
+    public bool SnapToLadders = true;
+    public float LadderSnapTime = 0.05f;
+    public float LadderShimmySpeedMultiplier = 0.5f;
+    public float LadderClimbSpeed = 6f;
+    public float LadderSlideSpeed = 12f;
+    public float LadderCooldownTime = 0.5f;
+    public float LadderPopForce = 20f;
+
     [Header("Jump")]
     public float JumpPower = 30f;
     public float MaxFallSpeed = 40f;
