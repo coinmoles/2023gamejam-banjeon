@@ -15,9 +15,12 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 512
-  WallLayer:
+  GroundLayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 256
+  CeilLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   ClimbableLayer:
     serializedVersion: 2
     m_Bits: 128

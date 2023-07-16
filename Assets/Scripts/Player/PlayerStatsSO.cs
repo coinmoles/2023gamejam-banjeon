@@ -7,7 +7,8 @@ public class PlayerStatsSO: ScriptableObject
     [Tooltip("Set this to the layer your player is on")]
     public LayerMask PlayerLayer;
     [Tooltip("Set this to the blocking layer that you will use (floor, ceil, wall etc)")]
-    public LayerMask WallLayer;
+    public LayerMask GroundLayer;
+    public LayerMask CeilLayer;
     [Tooltip("Set this to the climablewall Layer")]
     public LayerMask ClimbableLayer;
     [Tooltip("Set this to the ladder layer")]
