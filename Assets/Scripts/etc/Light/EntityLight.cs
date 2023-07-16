@@ -7,15 +7,9 @@ public class EntityLight : MonoBehaviour
     UnityEngine.Rendering.Universal.Light2D light;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         light = GetComponent<UnityEngine.Rendering.Universal.Light2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public void dayLight()

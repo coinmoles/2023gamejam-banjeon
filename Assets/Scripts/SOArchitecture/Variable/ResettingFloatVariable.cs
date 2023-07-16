@@ -11,6 +11,7 @@ namespace ScriptableObjectVariable
     {
         [SerializeField] private float _initialValue;
         [SerializeField] private ResettableRuntimeSet _resettableRuntimeSet;
+        public ResettableRuntimeSet ResettableRuntimeSet => _resettableRuntimeSet;
 
         public void Reset()
         {

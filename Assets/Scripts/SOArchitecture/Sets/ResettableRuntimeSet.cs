@@ -10,12 +10,14 @@ public class ResettableRuntimeSet : RuntimeSet<ScriptableObject>
     {
         foreach(IResettable resettable in Items)
         {
-            resettable.Reset();
+            if (resettable.ResettableRuntimeSet == this)
+                resettable.Reset();
         }
     }
 }
 
 public interface IResettable
 {
+    public ResettableRuntimeSet ResettableRuntimeSet { get; }
     public void Reset();
 }

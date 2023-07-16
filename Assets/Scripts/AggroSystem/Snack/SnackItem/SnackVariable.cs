@@ -12,6 +12,7 @@ public class SnackVariable : ScriptableObject, IResettable
     public SnackSO Snack => _snack;
 
     [SerializeField] private ResettableRuntimeSet _resettableRuntimeSet;
+    public ResettableRuntimeSet ResettableRuntimeSet => _resettableRuntimeSet;
 
     public void ObtainSnack(SnackSO snack)
     {

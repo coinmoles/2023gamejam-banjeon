@@ -19,8 +19,8 @@ public class TimeManager : MonoBehaviour
 
     private void Start()
     {
+        _onDayStart.Raise(this, null);
         _coroutine = StartCoroutine(ChangeDayNight(true));
-        _isDay.SetValue(true);
     }
 
     private IEnumerator ChangeDayNight(bool lastIsDay)
@@ -45,7 +45,8 @@ public class TimeManager : MonoBehaviour
     {
         _isDay.SetValue(true);
         _dayNightStart.SetValue(Time.time);
-        StopCoroutine(_coroutine);
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
         _coroutine = StartCoroutine(ChangeDayNight(true));
     }
 
@@ -53,7 +54,8 @@ public class TimeManager : MonoBehaviour
     {
         _isDay.SetValue(false);
         _dayNightStart.SetValue(Time.time);
-        StopCoroutine(_coroutine);
+        if (_coroutine != null)
+            StopCoroutine(_coroutine);
         _coroutine = StartCoroutine(ChangeDayNight(false));
     }
 }
