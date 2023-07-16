@@ -208,7 +208,7 @@ Transform:
   - {fileID: 2660794533958443639}
   - {fileID: 188384249673158875}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6118913192363692808
 Rigidbody2D:
@@ -470,6 +470,7 @@ GameObject:
   - component: {fileID: 2832362104276907612}
   - component: {fileID: 7626672435211941337}
   - component: {fileID: 6097279480706891451}
+  - component: {fileID: 1084620396227148725}
   m_Layer: 0
   m_Name: WeaponVisual
   m_TagString: Untagged
@@ -565,6 +566,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1084620396227148725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2423108307463311790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b4069e692fb49049b9371cefb79097f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _weaponHolder: {fileID: 2115717249483601552}
+  _attackAnimTime: 0.45
 --- !u!1 &3562761859196347728
 GameObject:
   m_ObjectHideFlags: 0
