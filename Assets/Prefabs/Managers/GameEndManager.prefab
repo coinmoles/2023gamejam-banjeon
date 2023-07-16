@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7742487099437806925
 MonoBehaviour:
@@ -102,3 +102,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5017a0ddf16a02344b7377ced384bd09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnPlaySFX: {fileID: 11400000, guid: 415e7292072111847a32d299db498da2, type: 2}
