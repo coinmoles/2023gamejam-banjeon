@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115717249483601552}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -208,7 +208,7 @@ Transform:
   - {fileID: 2660794533958443639}
   - {fileID: 188384249673158875}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6118913192363692808
 Rigidbody2D:
@@ -261,7 +261,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcbd657e69293b943a938308de19bae0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 11400000, guid: 9970cc2b0d1a9414d81c502b44890f8c, type: 2}
+  _stats: {fileID: 11400000, guid: 881062efd26e55f48a013d62a94e795c, type: 2}
   _col: {fileID: 4674567453377269582}
   _faceLeft: 0
   RedStats: {fileID: 11400000, guid: 881062efd26e55f48a013d62a94e795c, type: 2}
@@ -471,7 +471,7 @@ GameObject:
   - component: {fileID: 7626672435211941337}
   - component: {fileID: 6097279480706891451}
   - component: {fileID: 1084620396227148725}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: WeaponVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
