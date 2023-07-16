@@ -18,11 +18,6 @@ namespace ScriptableObjectVariable
             SetValue(_initialValue);
         }
 
-        public void Awake()
-        {
-            _resettableRuntimeSet.Add(this);
-        }
-
         public void OnDestroy()
         {
             _resettableRuntimeSet.Remove(this);
