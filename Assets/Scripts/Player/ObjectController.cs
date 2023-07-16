@@ -94,8 +94,8 @@ public class ObjectController : MonoBehaviour, IPlayerController
 
     protected virtual void CheckCollisions()
     {
-        _groundHitCount = Physics2D.CapsuleCastNonAlloc(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _groundHits, _stats.GrounderDistance, _stats.WallLayer);
-        _ceilingHitCount = Physics2D.CapsuleCastNonAlloc(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _ceilingHits, _stats.GrounderDistance, _stats.WallLayer);
+        _groundHitCount = Physics2D.CapsuleCastNonAlloc(_col.bounds.center, _col.size, _col.direction, 0, Vector2.down, _groundHits, _stats.GrounderDistance, _stats.GroundLayer);
+        _ceilingHitCount = Physics2D.CapsuleCastNonAlloc(_col.bounds.center, _col.size, _col.direction, 0, Vector2.up, _ceilingHits, _stats.GrounderDistance, _stats.CeilLayer);
 
         // Walls and Ladders
         var bounds = GetWallDetectionBounds();
