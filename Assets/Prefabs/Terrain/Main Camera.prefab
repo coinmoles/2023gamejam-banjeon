@@ -223,6 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2653512998800612121}
   - component: {fileID: 970413095306834578}
+  - component: {fileID: 4407469927215868041}
   m_Layer: 0
   m_Name: NightLayer
   m_TagString: Untagged
@@ -297,3 +298,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4407469927215868041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8846967862925017038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5422bb56831d74f9b00aeda4e87d75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
