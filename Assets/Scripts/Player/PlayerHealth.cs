@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
     public void OnPlayerHit()
     {
+        Debug.Log(_playerCurrentHealth.Value);
         _playerCurrentHealth.SetValue(_playerCurrentHealth - 1);
         
         if (_playerCurrentHealth == 0)

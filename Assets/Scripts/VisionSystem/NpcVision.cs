@@ -38,6 +38,7 @@ public class NpcVision : MonoBehaviour
         if (hit.collider != null)
             if (hit.collider.gameObject.CompareTag("Player"))
             {
+                Debug.Log("Collider");
                 _onPlayerHit.Raise(this, null);
                 _onDayStart.Raise(this, null);
             }

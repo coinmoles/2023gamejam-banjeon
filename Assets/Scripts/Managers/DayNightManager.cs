@@ -1,6 +1,7 @@
 using ScriptableObjectVariable;
 using UnityEngine;
 using System.Collections;
+using Unity.VisualScripting;
 
 public class TimeManager : MonoBehaviour
 {
@@ -20,10 +21,12 @@ public class TimeManager : MonoBehaviour
     private void Start()
     {
         _onDayStart.Raise(this, null);
-        _coroutine = StartCoroutine(ChangeDayNight(true));
+        lastIsDay = true;
+        _coroutine = StartCoroutine(ChangeDayNight());
     }
 
-    private IEnumerator ChangeDayNight(bool lastIsDay)
+    private bool lastIsDay;
+    private IEnumerator ChangeDayNight()
     {
         while(true)
         {
@@ -47,7 +50,8 @@ public class TimeManager : MonoBehaviour
         _dayNightStart.SetValue(Time.time);
         if (_coroutine != null)
             StopCoroutine(_coroutine);
-        _coroutine = StartCoroutine(ChangeDayNight(true));
+        lastIsDay = true;
+        _coroutine = StartCoroutine(ChangeDayNight());
     }
 
     public void OnNightStart(Component sender, object data)
@@ -56,6 +60,7 @@ public class TimeManager : MonoBehaviour
         _dayNightStart.SetValue(Time.time);
         if (_coroutine != null)
             StopCoroutine(_coroutine);
-        _coroutine = StartCoroutine(ChangeDayNight(false));
+        lastIsDay = false;
+        _coroutine = StartCoroutine(ChangeDayNight());
     }
 }

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DayNightStart
   m_EditorClassIdentifier: 
   DeveloperDescription: Time that day or night started
-  Value: 0
+  Value: 4.7569695
   _initialValue: 0
-  _resettableRuntimeSet: {fileID: 11400000, guid: 5508c5fa628c09e4b9ec3ad44beb1d8b, type: 2}
+  _resettableRuntimeSet: {fileID: 0}
