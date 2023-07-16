@@ -13,7 +13,6 @@ public class HealthBar : MonoBehaviour
     {
         for (int i = 0; i < _playerMaxHealth; i++)
         {
-            Debug.Log(i < _playerCurrentHealth);
             hearts[i].enabled = i < _playerCurrentHealth;
         }
     }
