@@ -36,6 +36,6 @@ public class TargetController : ObjectController
 
     protected virtual void GatherInput()
     {
-        
+        FrameInput = new FrameInput();
     }
 }
