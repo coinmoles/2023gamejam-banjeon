@@ -44,6 +44,7 @@ public class PlayerStatsSO: ScriptableObject
     public float LadderPopForce = 20f;
 
     [Header("Jump")]
+    public bool AllowJump;
     public float JumpPower = 30f;
     public float MaxFallSpeed = 40f;
     public float FallAcceleration = 100f;

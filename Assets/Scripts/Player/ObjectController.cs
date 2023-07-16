@@ -260,6 +260,12 @@ public class ObjectController : MonoBehaviour, IPlayerController
 
     protected virtual void HandleJump()
     {
+
+        if (!_stats.AllowWalls)
+        {
+            _jumpToConsume = false;
+            return;
+        }
         if (!_endedJumpEarly && !_grounded && !FrameInput.JumpHeld && _rb.velocity.y > 0) _endedJumpEarly = true; // Early end detection
         if (!_jumpToConsume && !HasBufferedJump) return;
 

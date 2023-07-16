@@ -316,6 +316,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f45cb5cadaa2c5f43be31559fa238313, type: 3}
   - soundName: item_obtained
     clip: {fileID: 8300000, guid: 753f840b62a971f479a7f3ee2020bd4f, type: 3}
+  - soundName: game_clear
+    clip: {fileID: 8300000, guid: 1ab045ea389ded8468c879058e9312b2, type: 3}
+  - soundName: door_open
+    clip: {fileID: 8300000, guid: ebec2a4ef60c0674a8e3723ce54690ca, type: 3}
   musicSource: {fileID: 8014864592035332840}
   sfxSource: {fileID: 3417505163173849670}
 --- !u!114 &315897630834523145

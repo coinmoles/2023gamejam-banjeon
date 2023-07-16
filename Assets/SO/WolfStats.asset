@@ -44,6 +44,7 @@ MonoBehaviour:
   LadderSlideSpeed: 12
   LadderCooldownTime: 0.5
   LadderPopForce: 5
+  AllowJump: 1
   JumpPower: 10
   MaxFallSpeed: 20
   FallAcceleration: 30
