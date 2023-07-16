@@ -11,12 +11,14 @@ public class VisionPizzaControl : MonoBehaviour
     private Vector3 _initialLocalScale;
     private GameObject _player;
     private NpcAI _npcAI;
+    private NpcSnack _npcSnack;
 
     private void Awake()
     {
         _objectController = GetComponentInParent<ObjectController>();
         _renderer = GetComponent<SpriteRenderer>();
         _npcAI = GetComponentInParent<NpcAI>();
+        _npcSnack = GetComponentInParent<NpcSnack>();
     }
 
     private void Start ()
@@ -36,9 +38,9 @@ public class VisionPizzaControl : MonoBehaviour
                 transform.localScale = _initialLocalScale;
         }
         if (_npcAI.GoState == GoState.OnLowerLevelLadder || _npcAI.GoState == GoState.OnHigherLevelLadder)
-        {
             transform.localScale = Vector3.zero;
-        }
+        else if (_npcSnack.IsAggro)
+            transform.localScale = Vector3.zero;
         else
             transform.localScale = _initialLocalScale;
 

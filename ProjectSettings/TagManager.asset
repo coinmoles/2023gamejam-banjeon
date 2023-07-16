@@ -20,7 +20,7 @@ TagManager:
   - WorkObject
   - Target
   - Ceiling
-  - 
+  - Unpassable
   - 
   - 
   - 
@@ -43,4 +43,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 655892357
+    locked: 0
+  - name: UI
+    uniqueID: 1375617921
     locked: 0

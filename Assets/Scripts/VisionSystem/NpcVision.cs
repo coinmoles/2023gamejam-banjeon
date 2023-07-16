@@ -14,11 +14,13 @@ public class NpcVision : MonoBehaviour
 
     private ObjectController _objectController;
     private NpcAI _npcAI;
+    private NpcSnack _npcSnack;
 
     private void Awake()
     {
         _objectController = GetComponent<ObjectController>();
         _npcAI = GetComponent<NpcAI>();
+        _npcSnack = GetComponent<NpcSnack>();
     }
 
     // Update is called once per frame
@@ -27,6 +29,8 @@ public class NpcVision : MonoBehaviour
         if (_isDay)
             return;
         if (_npcAI.GoState == GoState.OnLowerLevelLadder || _npcAI.GoState == GoState.OnHigherLevelLadder)
+            return;
+        else if (_npcSnack.IsAggro)
             return;
 
         RaycastHit2D hit = Physics2D.Raycast(transform.position, _objectController.FaceLeft ? Vector2.left : Vector2.right, _detectionDistance, _playerLayer);

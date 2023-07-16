@@ -17,10 +17,10 @@ MonoBehaviour:
     m_Bits: 512
   GroundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 33024
   CeilLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 49152
   ClimbableLayer:
     serializedVersion: 2
     m_Bits: 128

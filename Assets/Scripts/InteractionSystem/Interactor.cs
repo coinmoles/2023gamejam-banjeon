@@ -42,8 +42,6 @@ public class Interactor : MonoBehaviour
             return;
         }
 
-        Debug.Log(interactable.InteractionPrompt);
-
         _playerPromptController.OnInteractShow(interactable.InteractionPrompt);
         _playerPromptController.SetShow(true);
 

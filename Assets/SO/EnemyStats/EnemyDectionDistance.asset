@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: EnemyDectionDistance
   m_EditorClassIdentifier: 
   DeveloperDescription: Detection distance for standard enemy
-  Value: 8
+  Value: 4.5
