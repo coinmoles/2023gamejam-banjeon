@@ -624,7 +624,9 @@ PrefabInstance:
       value: HUDCanvas
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1740805114981954962, guid: cb1fd17e80cbcc347bb4c09bc7c4946b, type: 3}
+    - {fileID: 4777260495064700712, guid: cb1fd17e80cbcc347bb4c09bc7c4946b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb1fd17e80cbcc347bb4c09bc7c4946b, type: 3}
