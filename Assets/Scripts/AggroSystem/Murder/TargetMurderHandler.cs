@@ -14,6 +14,8 @@ public class TargetMurderHandler : MonoBehaviour, IAggroSlidable
     [Header("Game Events")]
     [SerializeField] private GameEvent _onPlaySFX;
 
+    [Header("Game Object")]
+    [SerializeField] private GameObject _meatPrefab;
 
     public bool IsAggro => _murder.EndTime > Time.time;
     public float MaxAggroTime => _murder.MaxAggroTime;
@@ -46,5 +48,16 @@ public class TargetMurderHandler : MonoBehaviour, IAggroSlidable
             float timeTilDayEnd = _dayNightLength - timeFromDayStart;
             _murder.EndTime -= timeTilDayEnd;
         }
+    }
+
+    public void OnGameClear()
+    {
+        Instantiate(_meatPrefab, transform.position, Quaternion.identity);
+        Invoke("DestroyMethod", 0.1f);
+    }
+
+    private void DestroyMethod()
+    {
+        Destroy(gameObject);
     }
 }

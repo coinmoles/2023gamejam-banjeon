@@ -412,7 +412,7 @@ Transform:
   - {fileID: 3719533076299013054}
   - {fileID: 5368471748974314682}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4977735459908483804
 Rigidbody2D:
@@ -453,14 +453,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54f56825872c2b04c8c0edff0d9d945c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameEvent: {fileID: 11400000, guid: 3819466204831414c8bba6e148398c3f, type: 2}
+  GameEvent: {fileID: 11400000, guid: 785651b0d72149a45b7588a97fa95569, type: 2}
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: NpcSnack, Assembly-CSharp
-        m_MethodName: OnPlayerHit
-        m_Mode: 0
+      - m_Target: {fileID: 3614870301049144663}
+        m_TargetAssemblyTypeName: TargetMurderHandler, Assembly-CSharp
+        m_MethodName: OnGameClear
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -511,6 +511,7 @@ MonoBehaviour:
     ConstantValue: 0
     Variable: {fileID: 11400000, guid: 6450dceecfeebe646a6924ba00bf32fd, type: 2}
   _onPlaySFX: {fileID: 11400000, guid: 415e7292072111847a32d299db498da2, type: 2}
+  _meatPrefab: {fileID: 370535006419567787, guid: ccb310513abe6a846b3a2281ea750e99, type: 3}
 --- !u!114 &9048922736184184952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -714,7 +715,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e3a83e6953deeb1438d73e7e6e3cc0c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 87f6dc6f4b113e849882130af3093dd2, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1

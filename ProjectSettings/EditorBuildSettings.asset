@@ -29,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Worlds/World5.unity
     guid: f687185cdc9632a44a5a93efaf127aeb
+  - enabled: 0
+    path: Assets/Scenes/DayNightTestScene.unity
+    guid: 1267891c92f6cbd46bd15476394e9c03
+  - enabled: 1
+    path: Assets/Scenes/GameOverScene.unity
+    guid: 70a26dc4a8c9541429a25599e9ca0093
   m_configObjects: {}
