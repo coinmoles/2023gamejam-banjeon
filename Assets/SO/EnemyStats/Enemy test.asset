@@ -15,9 +15,12 @@ MonoBehaviour:
   PlayerLayer:
     serializedVersion: 2
     m_Bits: 512
-  WallLayer:
+  GroundLayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 0
+  CeilLayer:
+    serializedVersion: 2
+    m_Bits: 0
   ClimbableLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -33,8 +36,8 @@ MonoBehaviour:
   GroundingForce: -1.5
   GrounderDistance: 0.05
   AllowLadders: 1
-  AutoAttachToLadders: 1
-  SnapToLadders: 1
+  AutoAttachToLadders: 0
+  SnapToLadders: 0
   LadderSnapTime: 0.05
   LadderShimmySpeedMultiplier: 0.5
   LadderClimbSpeed: 2
