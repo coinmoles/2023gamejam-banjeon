@@ -24,4 +24,4 @@ MonoBehaviour:
     ConstantValue: 10
     Variable: {fileID: 0}
   npcWorkListeners: []
-  WorkImage: {fileID: 21300000, guid: e3a83e6953deeb1438d73e7e6e3cc0c5, type: 3}
+  WorkImage: {fileID: 21300000, guid: 1193f94231e399f42bb2eec950908bf4, type: 3}

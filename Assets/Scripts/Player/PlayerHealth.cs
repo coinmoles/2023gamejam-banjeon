@@ -12,8 +12,7 @@ public class PlayerHealth : MonoBehaviour
     public void OnPlayerHit()
     {
         _playerCurrentHealth.SetValue(_playerCurrentHealth - 1);
-
-
+        
         if (_playerCurrentHealth == 0)
             _onGameOver.Raise(this, null);
     }

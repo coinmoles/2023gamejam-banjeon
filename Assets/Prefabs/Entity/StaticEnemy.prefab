@@ -99,7 +99,7 @@ MonoBehaviour:
   _likedSnack: {fileID: 11400000, guid: 8bbb9f61dd4d6a24fa6c5ace05110395, type: 2}
   _snackAggroTime:
     UseConstant: 1
-    ConstantValue: 40
+    ConstantValue: 2
     Variable: {fileID: 0}
   _isEating:
     UseConstant: 1

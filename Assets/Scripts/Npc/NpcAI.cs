@@ -55,7 +55,7 @@ public abstract class NpcAI : MonoBehaviour
         if (GoState == GoState.JustStarted)
         {
             // Check if it's on same, lower or higher level compared to location
-            if (Mathf.Abs(location.y - transform.position.y) < 0.1f)
+            if (Mathf.Abs(location.y - transform.position.y) < 0.5f)
                 GoState = GoState.OnSameLevel;
             else if (location.y - transform.position.y > 0)
                 GoState = GoState.OnLowerLevel;

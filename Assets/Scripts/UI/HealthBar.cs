@@ -12,6 +12,9 @@ public class HealthBar : MonoBehaviour
     public void OnPlayerHit()
     {
         for (int i = 0; i < _playerMaxHealth; i++)
-            hearts[i].enabled = i < _playerCurrentHealth - 1;
+        {
+            Debug.Log(i < _playerCurrentHealth);
+            hearts[i].enabled = i < _playerCurrentHealth;
+        }
     }
 }

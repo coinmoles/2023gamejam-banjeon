@@ -23,7 +23,7 @@ MonoBehaviour:
     m_Bits: 49152
   ClimbableLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 32896
   LadderLayer:
     serializedVersion: 2
     m_Bits: 1024
